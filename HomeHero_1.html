@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomeHero - Prototype</title>
+  <style>
+    :root {
+      --rich-black: #000f1b;
+      --dark-green: #022221;
+      --bangladesh-green: #026c4c;
+      --mountain-meadow: #2cc295;
+      --caribbean-green: #00f5b1;
+      --anti-flash-white: #f1f7f5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: linear-gradient(180deg, var(--rich-black), var(--bangladesh-green));
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      color: var(--anti-flash-white);
+    }
+
+    .app {
+      width: 100%;
+      max-width: 420px;
+      padding: 24px 20px 32px;
+    }
+
+    /* GLOBAL HEADER */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 20%, var(--caribbean-green), var(--dark-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .screen-title-main {
+      margin: 4px 0 2px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .screen-subtitle {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* SCREEN HANDLING */
+    .screen {
+      display: none;
+      margin-top: 12px;
+    }
+    .screen.active {
+      display: block;
+    }
+
+    /* LOGIN SPECIFIC */
+    .role-switch {
+      margin-top: 18px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 999px;
+      padding: 4px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .role-btn {
+      flex: 1;
+      border-radius: 999px;
+      padding: 8px 0;
+      font-size: 13px;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #cfd7d5;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .role-btn.active {
+      background: var(--caribbean-green);
+      color: #021013;
+      font-weight: 600;
+    }
+
+    .login-card,
+    .card {
+      margin-top: 22px;
+      background: rgba(2, 34, 33, 0.92);
+      border-radius: 22px;
+      padding: 18px 16px 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    .login-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .login-desc {
+      margin: 0 0 14px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .field label {
+      font-size: 12px;
+      opacity: 0.85;
+    }
+
+    .input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(241, 247, 245, 0.18);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 14px;
+      color: var(--anti-flash-white);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .input::placeholder {
+      color: rgba(241, 247, 245, 0.5);
+    }
+
+    .link-inline {
+      font-size: 12px;
+      color: var(--caribbean-green);
+      cursor: pointer;
+    }
+
+    .forgot-btn {
+      margin-top: 2px;
+      font-size: 11px;
+      color: var(--mountain-meadow);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      width: 100%;
+      text-align: right;
+    }
+
+    .btn-primary {
+      margin-top: 14px;
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #021013;
+      background: linear-gradient(135deg, var(--mountain-meadow), var(--caribbean-green));
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      margin-top: 8px;
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(241, 247, 245, 0.3);
+      padding: 9px 16px;
+      font-size: 13px;
+      background: transparent;
+      color: var(--anti-flash-white);
+      cursor: pointer;
+    }
+
+    .btn-ghost {
+      margin-top: 12px;
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      padding: 8px 4px;
+      font-size: 12px;
+      background: transparent;
+      color: var(--caribbean-green);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .benefits {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .benefit-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.32);
+      border: 1px solid rgba(241, 247, 245, 0.06);
+    }
+
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, var(--caribbean-green), var(--dark-green));
+      opacity: 0.95;
+    }
+
+    .benefit-text {
+      font-size: 13px;
+    }
+
+    .benefit-label {
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    .footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .section-sub {
+      margin: 0 0 14px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .method-btn {
+      width: 100%;
+      border-radius: 999px;
+      padding: 10px 14px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .google-btn {
+      background: #ffffff;
+      color: #222;
+    }
+
+    .email-btn,
+    .phone-btn {
+      background: transparent;
+      border: 1px solid rgba(241, 247, 245, 0.25);
+      color: var(--anti-flash-white);
+    }
+
+    .google-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background:
+        conic-gradient(from 0deg, #ea4335 0 25%, #fbbc05 25% 50%, #34a853 50% 75%, #4285f4 75% 100%);
+    }
+
+    .small {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 10px;
+    }
+
+    .back-link {
+      margin-top: 18px;
+      font-size: 12px;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .back-link span {
+      color: var(--caribbean-green);
+      cursor: pointer;
+    }
+
+    .home-hero-card {
+      margin-top: 18px;
+      background: radial-gradient(circle at 10% 0%, var(--caribbean-green), var(--dark-green));
+      border-radius: 20px;
+      padding: 16px 16px 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .home-hero-title {
+      margin: 0 0 6px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .home-hero-sub {
+      margin: 0 0 12px;
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.2);
+      font-size: 11px;
+      border: 1px solid rgba(241, 247, 245, 0.35);
+    }
+
+    .home-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .home-row {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 16px;
+      padding: 10px 12px;
+      border: 1px solid rgba(241, 247, 245, 0.08);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .services-section {
+      margin-top: 20px;
+    }
+
+    .services-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .services-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .services-link {
+      font-size: 12px;
+      color: var(--caribbean-green);
+      cursor: pointer;
+    }
+
+    .category-group {
+      margin-top: 10px;
+    }
+
+    .category-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .service-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 16px;
+      padding: 9px 10px 11px;
+      border: 1px solid rgba(241, 247, 245, 0.08);
+    }
+
+    .service-card.clickable {
+      cursor: pointer;
+    }
+
+    .service-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 20%, var(--caribbean-green), var(--dark-green));
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .service-name {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .service-desc {
+      font-size: 11px;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    .bottom-nav {
+      margin-top: 18px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(241, 247, 245, 0.11);
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(241, 247, 245, 0.18);
+      background: rgba(0, 0, 0, 0.45);
+      color: var(--anti-flash-white);
+      padding: 8px 4px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(135deg, var(--mountain-meadow), var(--caribbean-green));
+      color: #021013;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+      border-color: rgba(241, 247, 245, 0.4);
+    }
+
+    .map-frame {
+      margin-top: 10px;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 160px;
+      border: 1px solid rgba(241, 247, 245, 0.12);
+    }
+
+    .row-inline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(241, 247, 245, 0.3);
+      background: transparent;
+      color: var(--anti-flash-white);
+      cursor: pointer;
+    }
+
+    .radio-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .radio-row input {
+      accent-color: var(--caribbean-green);
+    }
+
+    .view-pass {
+      margin-top: 4px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.85;
+    }
+    .view-pass input {
+      accent-color: var(--caribbean-green);
+    }
+
+    .error-text {
+      font-size: 11px;
+      color: #ff6b6b;
+      margin-top: 2px;
+    }
+
+    /* GOOGLE PICKER OVERLAY */
+    .google-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .google-card {
+      background: #ffffff;
+      color: #202124;
+      border-radius: 16px;
+      padding: 16px 16px 12px;
+      width: 90%;
+      max-width: 360px;
+    }
+
+    .google-account {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .google-account:hover {
+      background: #f1f3f4;
+    }
+
+    .google-account-name {
+      font-size: 14px;
+    }
+
+    .google-account-email {
+      font-size: 11px;
+      color: #5f6368;
+    }
+
+    @media (min-width: 768px) {
+      .app {
+        max-width: 430px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <!-- HEADER GLOBAL -->
+    <div class="logo">
+      <div class="logo-mark">H</div>
+      <div>
+        <div style="font-size:12px; opacity:0.9;">HomeHero</div>
+        <div style="font-size:11px; opacity:0.75;">Platform layanan rumah tangga</div>
+      </div>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <section id="screen-login" class="screen active">
+      <h1 class="screen-title-main">Welcome back 👋</h1>
+      <p class="screen-subtitle">Masuk untuk mengelola layanan rumah Anda.</p>
+
+      <div class="role-switch">
+        <button class="role-btn active" id="roleCustomer" onclick="setRole('customer')">
+          Customer
+        </button>
+        <button class="role-btn" id="roleHero" onclick="setRole('hero')">
+          Hero (Mitra)
+        </button>
+      </div>
+
+      <section class="login-card">
+        <p class="login-title">Sign in to HomeHero</p>
+        <p class="login-desc">
+          Akses layanan kebersihan, servis, dan bantuan rumah tangga yang tepercaya.
+        </p>
+
+        <div class="field">
+          <label>Email atau nomor HP</label>
+          <input class="input" type="text" placeholder="contoh: Kelompok9JosJis@mail.com" id="loginEmail" />
+        </div>
+
+        <div class="field">
+          <label>Kata sandi</label>
+          <input class="input" type="password" placeholder="Minimal 8 karakter" id="loginPassword" />
+          <label class="view-pass">
+            <input type="checkbox" id="togglePassword" />
+            Lihat kata sandi
+          </label>
+          <div id="loginError" class="error-text" style="display:none;"></div>
+        </div>
+
+        <button class="forgot-btn" type="button" onclick="showScreen('forgot')">
+          Lupa kata sandi?
+        </button>
+
+        <button class="btn-primary" id="loginButton" onclick="handleLogin()">
+          Masuk sebagai Customer
+        </button>
+        <button class="btn-secondary" type="button" onclick="openGooglePicker()">
+          Masuk dengan Google (simulasi)
+        </button>
+        <button class="btn-secondary" type="button" onclick="showScreen('register')">
+          Buat akun baru
+        </button>
+      </section>
+
+      <section class="benefits">
+        <div class="benefit-card">
+          <div class="benefit-icon"></div>
+          <div>
+            <div class="benefit-text">Trusted home helpers</div>
+            <div class="benefit-label">Mitra bersertifikat &amp; terverifikasi.</div>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"></div>
+          <div>
+            <div class="benefit-text">Secure payments</div>
+            <div class="benefit-label">Pembayaran cashless dengan sistem escrow.</div>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"></div>
+          <div>
+            <div class="benefit-text">Verified partners</div>
+            <div class="benefit-label">Rating &amp; ulasan transparan dari pelanggan.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        Dengan masuk, Anda menyetujui Syarat &amp; Kebijakan Privasi HomeHero.
+      </div>
+    </section>
+
+    <!-- REGISTER SCREEN -->
+    <section id="screen-register" class="screen">
+      <h1 class="screen-title-main">Buat akun baru</h1>
+      <p class="screen-subtitle">
+        Gabung sebagai pelanggan HomeHero dan kelola kebutuhan rumah Anda dengan lebih mudah.
+      </p>
+
+      <section class="card">
+        <p class="section-title">Pilih metode pendaftaran</p>
+
+        <button class="method-btn google-btn" onclick="registerGoogle()">
+          <div class="google-icon"></div>
+          <span>Lanjutkan dengan Google (simulasi)</span>
+        </button>
+
+        <button class="method-btn email-btn" onclick="toggleMethod('email')">
+          Daftar dengan Email
+        </button>
+
+        <button class="method-btn phone-btn" onclick="toggleMethod('phone')">
+          Daftar dengan Nomor HP
+        </button>
+
+        <div id="emailForm" style="margin-top:14px; display:none;">
+          <p class="section-title" style="margin-bottom:6px;">Form pendaftaran dengan Email</p>
+          <div class="field">
+            <label>Nama lengkap</label>
+            <input class="input" type="text" placeholder="Nama lengkap Anda" id="regEmailName" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input class="input" type="email" placeholder="contoh: Kelompok9JosJis@mail.com" id="regEmail" />
+          </div>
+          <div class="field">
+            <label>Kata sandi</label>
+            <input class="input" type="password" placeholder="Minimal 8 karakter" id="regEmailPassword" />
+          </div>
+          <button class="btn-primary" onclick="finishRegister('email')">
+            Daftar dengan Email
+          </button>
+        </div>
+
+        <div id="phoneForm" style="margin-top:14px; display:none;">
+          <p class="section-title" style="margin-bottom:6px;">Form pendaftaran dengan Nomor HP</p>
+          <div class="field">
+            <label>Nama lengkap</label>
+            <input class="input" type="text" placeholder="Nama lengkap Anda" id="regPhoneName" />
+          </div>
+          <div class="field">
+            <label>Nomor HP</label>
+            <input class="input" type="tel" placeholder="contoh: 08xxxxxxxxxx" id="regPhone" />
+          </div>
+          <div class="field">
+            <label>Kata sandi</label>
+            <input class="input" type="password" placeholder="Minimal 8 karakter" id="regPhonePassword" />
+          </div>
+          <button class="btn-primary" onclick="finishRegister('phone')">
+            Daftar dengan Nomor HP
+          </button>
+        </div>
+
+        <p class="small">
+          Dengan mendaftar, Anda menyetujui Syarat &amp; Kebijakan Privasi HomeHero.
+        </p>
+      </section>
+
+      <div class="back-link">
+        Sudah punya akun? <span onclick="showScreen('login')">Masuk di sini</span>
+      </div>
+    </section>
+
+    <!-- FORGOT PASSWORD SCREEN -->
+    <section id="screen-forgot" class="screen">
+      <h1 class="screen-title-main">Lupa kata sandi?</h1>
+      <p class="screen-subtitle">
+        Masukkan email atau nomor HP yang terdaftar. Kami akan mengirimkan tautan atau kode untuk mengatur ulang (simulasi).
+      </p>
+
+      <section class="card">
+        <div class="field">
+          <label>Email atau nomor HP</label>
+          <input class="input" type="text" placeholder="contoh: Kelompok9JosJis@mail.com atau 08xxxxxxxxxx" />
+        </div>
+        <button class="btn-primary" onclick="sendReset()">
+          Kirim instruksi reset
+        </button>
+      </section>
+
+      <div class="back-link">
+        Ingat kata sandi? <span onclick="showScreen('login')">Kembali ke login</span>
+      </div>
+    </section>
+
+    <!-- HOME CUSTOMER SCREEN -->
+    <section id="screen-home" class="screen">
+      <h1 class="screen-title-main">Halo, <span id="homeGreetingName">Kelompok9JosJis</span> 👋</h1>
+      <p class="screen-subtitle">Ini contoh tampilan beranda Customer HomeHero.</p>
+
+      <section class="home-hero-card">
+        <p class="home-hero-title">Rumah rapi, hidup lebih ringan.</p>
+        <p class="home-hero-sub">
+          Pesan cleaning, cuci AC, hingga family massage langsung dari satu aplikasi.
+        </p>
+        <div class="tag-pill">
+          ✨ Layanan aktif &amp; rekomendasi hari ini
+        </div>
+      </section>
+
+      <div class="home-list">
+        <div class="home-row">
+          <span>Cleaning harian • 16.00 WIB</span>
+          <span class="link-inline" onclick="openOrderDetail('cleaning-harian')">Detail ›</span>
+        </div>
+        <div class="home-row">
+          <span>Cuci AC • Jumat, 10.00 WIB</span>
+          <span class="link-inline" onclick="openOrderDetail('cuci-ac')">Detail ›</span>
+        </div>
+      </div>
+
+      <section class="services-section">
+        <div class="services-header">
+          <div class="services-title">Layanan populer HomeHero</div>
+          <div class="services-link" onclick="showScreen('services')">Lihat semua</div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card clickable" onclick="startBooking('cleaning-harian')">
+            <div class="service-icon"></div>
+            <div class="service-name">Cleaning harian</div>
+            <div class="service-desc">Bersih-bersih rutin rumah/kos.</div>
+          </article>
+
+          <article class="service-card clickable" onclick="startBooking('deep-cleaning')">
+            <div class="service-icon"></div>
+            <div class="service-name">Deep Cleaning</div>
+            <div class="service-desc">Bersih total sampai detail.</div>
+          </article>
+
+          <article class="service-card clickable" onclick="startBooking('cuci-pakaian')">
+            <div class="service-icon"></div>
+            <div class="service-name">Cuci pakaian</div>
+            <div class="service-desc">Laundry kiloan / rumahan.</div>
+          </article>
+
+          <article class="service-card clickable" onclick="startBooking('family-massage')">
+            <div class="service-icon"></div>
+            <div class="service-name">Family massage</div>
+            <div class="service-desc">Pijat keluarga di rumah.</div>
+          </article>
+        </div>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- SEMUA LAYANAN SCREEN -->
+    <section id="screen-services" class="screen">
+      <h1 class="screen-title-main">Semua layanan HomeHero</h1>
+      <p class="screen-subtitle">
+        Pilih kategori layanan yang sesuai dengan kebutuhan rumah, keluarga, atau bisnismu.
+      </p>
+
+      <section class="card">
+        <!-- 1. Kebersihan Rumah -->
+        <div class="category-group">
+          <div class="category-title">1. Layanan Kebersihan Rumah</div>
+          <div class="service-grid">
+            <article class="service-card clickable" onclick="startBooking('cleaning-harian')">
+              <div class="service-icon"></div>
+              <div class="service-name">Cleaning harian</div>
+              <div class="service-desc">Bersih-bersih rutin rumah/kos.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('cleaning-bulanan')">
+              <div class="service-icon"></div>
+              <div class="service-name">Cleaning bulanan</div>
+              <div class="service-desc">Pembersihan berkala lebih menyeluruh.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('deep-cleaning')">
+              <div class="service-icon"></div>
+              <div class="service-name">Deep Cleaning</div>
+              <div class="service-desc">Bersih total sampai detail.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('cleaning-pindahan')">
+              <div class="service-icon"></div>
+              <div class="service-name">Cleaning pindahan</div>
+              <div class="service-desc">Sebelum / sesudah pindah rumah/kos.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('water-heater')">
+              <div class="service-icon"></div>
+              <div class="service-name">Pembersihan water heater</div>
+              <div class="service-desc">Rawat heater biar awet & aman.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('cuci-ac')">
+              <div class="service-icon"></div>
+              <div class="service-name">Pembersihan / cuci AC</div>
+              <div class="service-desc">Cuci dan perawatan AC dasar.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('kamar-dapur')">
+              <div class="service-icon"></div>
+              <div class="service-name">Pembersihan kamar mandi & dapur</div>
+              <div class="service-desc">Fokus area yang sering kotor.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('furniture')">
+              <div class="service-icon"></div>
+              <div class="service-name">Pembersihan furniture</div>
+              <div class="service-desc">Sofa, lemari, karpet, dan lainnya.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('disinfeksi')">
+              <div class="service-icon"></div>
+              <div class="service-name">Disinfeksi rumah</div>
+              <div class="service-desc">Penyemprotan disinfektan rumah.</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 2. Perawatan & Servis Rumah -->
+        <div class="category-group">
+          <div class="category-title">2. Layanan Perawatan &amp; Servis Rumah</div>
+          <div class="service-grid">
+            <article class="service-card clickable" onclick="startBooking('servis-ac')">
+              <div class="service-icon"></div>
+              <div class="service-name">Servis AC berkala</div>
+              <div class="service-desc">Perawatan AC agar tetap dingin.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('perbaikan-listrik')">
+              <div class="service-icon"></div>
+              <div class="service-name">Perbaikan ringan listrik</div>
+              <div class="service-desc">Stop kontak, lampu, dan sejenisnya.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('perbaikan-plumbing')">
+              <div class="service-icon"></div>
+              <div class="service-name">Perbaikan ringan pipa/plumbing</div>
+              <div class="service-desc">Bocor / mampet ringan.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('perbaikan-elektronik')">
+              <div class="service-icon"></div>
+              <div class="service-name">Perbaikan elektronik sederhana</div>
+              <div class="service-desc">Peralatan rumah tangga dasar.</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 3. Pakaian & Laundry -->
+        <div class="category-group">
+          <div class="category-title">3. Layanan Pakaian &amp; Laundry</div>
+          <div class="service-grid">
+            <article class="service-card clickable" onclick="startBooking('cuci-pakaian')">
+              <div class="service-icon"></div>
+              <div class="service-name">Cuci pakaian</div>
+              <div class="service-desc">Laundry kiloan/rumahan.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('setrika')">
+              <div class="service-icon"></div>
+              <div class="service-name">Layanan setrika</div>
+              <div class="service-desc">Setrika rapi siap pakai.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('paket-cuci-setrika')">
+              <div class="service-icon"></div>
+              <div class="service-name">Paket cuci + setrika</div>
+              <div class="service-desc">Satu paket cuci & setrika ke rumah.</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 4. Pengasuhan & Kepengurusan -->
+        <div class="category-group">
+          <div class="category-title">4. Layanan Pengasuhan &amp; Kepengurusan</div>
+          <div class="service-grid">
+            <article class="service-card clickable" onclick="startBooking('asisten-harian')">
+              <div class="service-icon"></div>
+              <div class="service-name">Asisten rumah harian</div>
+              <div class="service-desc">Daily helper untuk pekerjaan rumah.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('housekeeping')">
+              <div class="service-icon"></div>
+              <div class="service-name">Housekeeping</div>
+              <div class="service-desc">Pengelolaan rumah menyeluruh.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('pengasuhan-anak')">
+              <div class="service-icon"></div>
+              <div class="service-name">Pengasuhan anak harian</div>
+              <div class="service-desc">Babysitter harian di rumah.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('pendamping-lansia')">
+              <div class="service-icon"></div>
+              <div class="service-name">Pendampingan lansia</div>
+              <div class="service-desc">Pendamping untuk lansia/keluarga.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('family-massage')">
+              <div class="service-icon"></div>
+              <div class="service-name">Family massage</div>
+              <div class="service-desc">Pijat keluarga di rumah.</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 5. Belanja & Kebutuhan Harian -->
+        <div class="category-group">
+          <div class="category-title">5. Layanan Belanja &amp; Kebutuhan Harian</div>
+          <div class="service-grid">
+            <article class="service-card clickable" onclick="startBooking('titip-belanja')">
+              <div class="service-icon"></div>
+              <div class="service-name">Jasa titip belanja</div>
+              <div class="service-desc">Groceries &amp; kebutuhan rumah.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('belanja-bulanan')">
+              <div class="service-icon"></div>
+              <div class="service-name">Belanja bulanan</div>
+              <div class="service-desc">Belanja ke supermarket/minimarket.</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 6. Layanan untuk Bisnis & Kantor -->
+        <div class="category-group">
+          <div class="category-title">6. Layanan untuk Bisnis &amp; Kantor</div>
+          <div class="service-grid">
+            <article class="service-card clickable" onclick="startBooking('office-cleaning')">
+              <div class="service-icon"></div>
+              <div class="service-name">Office cleaning</div>
+              <div class="service-desc">Kebersihan kantor kecil / ruko.</div>
+            </article>
+            <article class="service-card clickable" onclick="startBooking('housekeeping-bisnis')">
+              <div class="service-icon"></div>
+              <div class="service-name">Housekeeping untuk bisnis</div>
+              <div class="service-desc">Servis rutin untuk kantor/toko/kos.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <button class="btn-ghost" onclick="showScreen('home')">
+        ← Kembali ke Home
+      </button>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- AKTIVITAS -->
+    <section id="screen-activity" class="screen">
+      <h1 class="screen-title-main">Aktivitas & Riwayat</h1>
+      <p class="screen-subtitle">
+        Lihat pesanan yang sedang berjalan dan riwayat layanan Anda (contoh tampilan sederhana).
+      </p>
+
+      <section class="card">
+        <p class="section-title">Sedang berjalan</p>
+        <div class="home-list">
+          <div class="home-row">
+            <span>Cleaning harian • Dalam proses</span>
+            <span class="link-inline" onclick="openOrderDetail('cleaning-harian')">Detail ›</span>
+          </div>
+        </div>
+
+        <p class="section-title" style="margin-top:14px;">Riwayat selesai</p>
+        <div class="home-list">
+          <div class="home-row">
+            <span>Deep Cleaning • Selesai kemarin</span>
+            <span class="link-inline" onclick="openReview('deep-cleaning')">Ulas layanan</span>
+          </div>
+          <div class="home-row">
+            <span>Cuci pakaian • Selesai 2 hari lalu</span>
+            <span class="link-inline" onclick="startBooking('cuci-pakaian')">Pesan lagi</span>
+          </div>
+        </div>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- PESAN -->
+    <section id="screen-messages" class="screen">
+      <h1 class="screen-title-main">Pesan</h1>
+      <p class="screen-subtitle">
+        Komunikasi dengan mitra HomeHero dan dukungan pelanggan (mockup sederhana).
+      </p>
+
+      <section class="card">
+        <p class="section-title">Chat terbaru</p>
+        <div class="home-list">
+          <div class="home-row">
+            <span>Mbak Sari • Cleaning harian</span>
+            <span class="link-inline" onclick="openChat('mitra')">Buka chat</span>
+          </div>
+          <div class="home-row">
+            <span>Support HomeHero</span>
+            <span class="link-inline" onclick="openChat('support')">Lihat pesan</span>
+          </div>
+        </div>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- AKUN -->
+    <section id="screen-account" class="screen">
+      <h1 class="screen-title-main">Akun & Profil</h1>
+      <p class="screen-subtitle">
+        Kelola data pribadi, kontak, dan preferensi Anda (contoh tampilan).
+      </p>
+
+      <section class="card">
+        <p class="section-title">Profil</p>
+        <div class="field">
+          <label>Nama lengkap</label>
+          <input class="input" type="text" id="accName" placeholder="Nama lengkap" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input class="input" type="email" id="accEmail" placeholder="Email" />
+        </div>
+        <div class="field">
+          <label>Nomor HP</label>
+          <input class="input" type="tel" id="accPhone" placeholder="Nomor HP" />
+        </div>
+
+        <div class="field">
+          <label>Alamat</label>
+          <input class="input" type="text" id="accAddress" placeholder="Alamat domisili" />
+        </div>
+        <div class="field">
+          <label>Tempat, tanggal lahir</label>
+          <input class="input" type="text" id="accDob" placeholder="contoh: Surabaya, 17 Agustus 2000" />
+        </div>
+        <div class="field">
+          <label>Status perkawinan</label>
+          <input class="input" type="text" id="accMarital" placeholder="Belum menikah / Menikah / Dll." />
+        </div>
+        <div class="field">
+          <label>Jenis kelamin</label>
+          <select class="input" id="accGender">
+            <option value="">Pilih jenis kelamin</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Kewarganegaraan</label>
+          <input class="input" type="text" id="accCitizen" placeholder="contoh: WNI" />
+        </div>
+
+        <button class="btn-primary" onclick="saveAccountProfile()">
+          Simpan perubahan (simulasi)
+        </button>
+
+        <p class="small">
+          Di versi produksi, di sini akan ada pengaturan alamat, metode pembayaran, dan preferensi notifikasi.
+        </p>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- BOOKING SCREEN -->
+    <section id="screen-booking" class="screen">
+      <h1 class="screen-title-main" id="bookingTitle">Pesan layanan</h1>
+      <p class="screen-subtitle" id="bookingSubtitle">
+        Lengkapi detail pemesanan sesuai kebutuhan Anda.
+      </p>
+
+      <section class="card">
+        <p class="section-title" id="bookingServiceName">Nama layanan</p>
+        <p class="small" id="bookingCategory">Kategori layanan</p>
+
+        <!-- Alamat & Peta -->
+        <div class="field">
+          <label>Alamat layanan</label>
+          <input class="input" id="bookingAddress" placeholder="Masukkan alamat di Surabaya" />
+        </div>
+        <button class="btn-secondary" type="button" onclick="useDefaultAddress()">
+          Gunakan alamat contoh di Surabaya
+        </button>
+
+        <div class="map-frame">
+          <iframe
+            title="Peta Surabaya"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.120748104777!2d112.731!3d-7.3379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbf75c02ecdd%3A0x3027a76e352bc20!2sSurabaya!5e0!3m2!1sid!2sid!4v1700000000000">
+          </iframe>
+        </div>
+
+        <!-- Tipe hunian -->
+        <div class="field" style="margin-top:12px;">
+          <label>Tipe hunian</label>
+          <div class="home-list" style="gap:6px;">
+            <label class="home-row radio-row" style="cursor:pointer;">
+              <input type="radio" name="homeType" value="Rumah" checked />
+              Rumah
+            </label>
+            <label class="home-row radio-row" style="cursor:pointer;">
+              <input type="radio" name="homeType" value="Apartemen" />
+              Apartemen
+            </label>
+            <label class="home-row radio-row" style="cursor:pointer;">
+              <input type="radio" name="homeType" value="Villa" />
+              Villa
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Nomor rumah / unit</label>
+          <input class="input" id="bookingHouseNumber" placeholder="contoh: Blok B2 No.7 / Unit 12A" />
+        </div>
+
+        <!-- Service-specific -->
+        <div id="serviceSpecificContainer" style="margin-top:14px;"></div>
+
+        <!-- Harga -->
+        <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div class="section-title" style="margin:0; font-size:14px;">Estimasi harga</div>
+            <div class="small" id="bookingPriceNote">
+              Harga simulasi, belum termasuk biaya tambahan di lapangan.
+            </div>
+          </div>
+          <div style="font-weight:700; font-size:18px;" id="bookingPrice">Rp0</div>
+        </div>
+
+        <button class="btn-primary" style="margin-top:14px;" onclick="confirmBooking()">
+          Pesan sekarang (simulasi)
+        </button>
+
+        <button class="btn-secondary" type="button" onclick="backToServices()">
+          Kembali ke daftar layanan
+        </button>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- HERO DASHBOARD SCREEN -->
+    <section id="screen-hero" class="screen">
+      <h1 class="screen-title-main">Dashboard Hero</h1>
+      <p class="screen-subtitle">
+        Berikut contoh tampilan sederhana untuk mitra (Hero) HomeHero.
+      </p>
+
+      <section class="home-hero-card">
+        <p class="home-hero-title">Halo, Mitra HomeHero 👷‍♂️</p>
+        <p class="home-hero-sub">
+          Kelola pesanan, jadwal kerja, dan riwayat layanan Anda di satu tempat.
+        </p>
+        <div class="tag-pill">
+          📅 Jadwal hari ini: 2 pesanan
+        </div>
+      </section>
+
+      <div class="home-list">
+        <div class="home-row">
+          <span>General Cleaning • 09.00 WIB</span>
+          <span class="link-inline" onclick="openOrderDetail('cleaning-harian')">Detail ›</span>
+        </div>
+        <div class="home-row">
+          <span>Cuci AC • 13.30 WIB</span>
+          <span class="link-inline" onclick="openOrderDetail('cuci-ac')">Detail ›</span>
+        </div>
+      </div>
+
+      <button class="btn-ghost" onclick="showScreen('login')">
+        ← Keluar ke halaman login
+      </button>
+    </section>
+  </main>
+
+  <!-- GOOGLE ACCOUNT PICKER (SIMULASI) -->
+  <div id="googleOverlay" class="google-overlay">
+    <div class="google-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div style="font-weight:600;">Pilih akun Google</div>
+        <button type="button" onclick="closeGooglePicker()" style="background:none;border:none;font-size:16px;cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:12px; margin-top:0; margin-bottom:10px;">
+        Ini hanya simulasi tampilan pemilihan akun Google untuk kebutuhan prototipe HomeHero.
+      </p>
+      <div id="googleAccountList"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentRole = "customer";
+    let currentServiceId = null;
+    let currentUser = null;
+    let users = [];
+
+    function loadUsers() {
+      try {
+        const raw = localStorage.getItem("homeheroUsers");
+        if (raw) users = JSON.parse(raw);
+      } catch (e) {
+        users = [];
+      }
+    }
+
+    function saveUsers() {
+      localStorage.setItem("homeheroUsers", JSON.stringify(users));
+    }
+
+    loadUsers();
+
+    const servicesConfig = {
+      // Kebersihan
+      "cleaning-harian": { name: "Cleaning harian", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+      "cleaning-bulanan": { name: "Cleaning bulanan", category: "Layanan Kebersihan Rumah", type: "monthlyCleaning" },
+      "deep-cleaning": { name: "Deep Cleaning", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+      "cleaning-pindahan": { name: "Cleaning pindahan", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+      "water-heater": { name: "Pembersihan water heater", category: "Layanan Kebersihan Rumah", type: "waterHeater" },
+      "cuci-ac": { name: "Pembersihan / cuci AC", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+      "kamar-dapur": { name: "Pembersihan kamar mandi & dapur", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+      "furniture": { name: "Pembersihan furniture", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+      "disinfeksi": { name: "Disinfeksi rumah", category: "Layanan Kebersihan Rumah", type: "simpleCleaning" },
+
+      // Perawatan & Servis
+      "servis-ac": { name: "Servis AC berkala", category: "Layanan Perawatan & Servis Rumah", type: "maintenance" },
+      "perbaikan-listrik": { name: "Perbaikan ringan listrik", category: "Layanan Perawatan & Servis Rumah", type: "maintenance" },
+      "perbaikan-plumbing": { name: "Perbaikan ringan pipa/plumbing", category: "Layanan Perawatan & Servis Rumah", type: "maintenance" },
+      "perbaikan-elektronik": { name: "Perbaikan elektronik sederhana", category: "Layanan Perawatan & Servis Rumah", type: "maintenance" },
+
+      // Laundry
+      "cuci-pakaian": { name: "Cuci pakaian", category: "Layanan Pakaian & Laundry", type: "laundry" },
+      "setrika": { name: "Layanan setrika", category: "Layanan Pakaian & Laundry", type: "laundry" },
+      "paket-cuci-setrika": { name: "Paket cuci + setrika", category: "Layanan Pakaian & Laundry", type: "laundry" },
+
+      // Pengasuhan & Kepengurusan
+      "asisten-harian": { name: "Asisten rumah harian", category: "Layanan Pengasuhan & Kepengurusan", type: "careDaily" },
+      "housekeeping": { name: "Housekeeping", category: "Layanan Pengasuhan & Kepengurusan", type: "careDaily" },
+      "pengasuhan-anak": { name: "Pengasuhan anak harian", category: "Layanan Pengasuhan & Kepengurusan", type: "careDailyChild" },
+      "pendamping-lansia": { name: "Pendampingan lansia", category: "Layanan Pengasuhan & Kepengurusan", type: "careDailyElder" },
+      "family-massage": { name: "Family massage", category: "Layanan Pengasuhan & Kepengurusan", type: "massage" },
+
+      // Belanja
+      "titip-belanja": { name: "Jasa titip belanja", category: "Layanan Belanja & Kebutuhan Harian", type: "shopping" },
+      "belanja-bulanan": { name: "Belanja bulanan", category: "Layanan Belanja & Kebutuhan Harian", type: "shopping" },
+
+      // Bisnis
+      "office-cleaning": { name: "Office cleaning", category: "Layanan untuk Bisnis & Kantor", type: "businessCleaning" },
+      "housekeeping-bisnis": { name: "Housekeeping untuk bisnis", category: "Layanan untuk Bisnis & Kantor", type: "businessCleaning" }
+    };
+
+    function setRole(role) {
+      currentRole = role;
+      const customerBtn = document.getElementById("roleCustomer");
+      const heroBtn = document.getElementById("roleHero");
+      const loginBtn = document.getElementById("loginButton");
+
+      if (role === "customer") {
+        customerBtn.classList.add("active");
+        heroBtn.classList.remove("active");
+        loginBtn.textContent = "Masuk sebagai Customer";
+      } else {
+        heroBtn.classList.add("active");
+        customerBtn.classList.remove("active");
+        loginBtn.textContent = "Masuk sebagai Hero";
+      }
+    }
+
+    function setActiveNav(tab) {
+      document.querySelectorAll(".nav-btn").forEach((btn) => {
+        if (btn.dataset.tab === tab) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+    }
+
+    function showScreen(name) {
+      const ids = [
+        "login",
+        "register",
+        "forgot",
+        "home",
+        "services",
+        "activity",
+        "messages",
+        "account",
+        "booking",
+        "hero"
+      ];
+      ids.forEach((id) => {
+        const el = document.getElementById("screen-" + id);
+        if (el) el.classList.toggle("active", id === name);
+      });
+
+      if (["home", "activity", "messages", "account"].includes(name)) {
+        setActiveNav(name);
+      }
+      if (name === "account") {
+        updateAccountForm();
+      }
+    }
+
+    function handleLogin() {
+      const idValue = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      const errorEl = document.getElementById("loginError");
+
+      errorEl.style.display = "none";
+      errorEl.textContent = "";
+
+      if (!idValue || !password) {
+        errorEl.textContent = "Email/nomor HP dan kata sandi wajib diisi.";
+        errorEl.style.display = "block";
+        return;
+      }
+
+      const user = users.find((u) => {
+        const id = (u.identifier || "").toString();
+        return id.toLowerCase() === idValue.toLowerCase();
+      });
+
+      if (!user) {
+        errorEl.textContent = "Akun tidak ditemukan. Silakan daftar terlebih dahulu.";
+        errorEl.style.display = "block";
+        return;
+      }
+
+      if (user.password !== password) {
+        errorEl.textContent = "Kata sandi salah";
+        errorEl.style.display = "block";
+        return;
+      }
+
+      currentUser = user;
+      updateUserUI();
+
+      if (currentRole === "customer") {
+        showScreen("home");
+      } else {
+        showScreen("hero");
+      }
+    }
+
+    function registerGoogle() {
+      alert(
+        "Simulasi: di versi produksi tombol ini akan terhubung ke akun Google.\n\nUntuk demo ini, gunakan registrasi email/nomor HP atau tombol 'Masuk dengan Google (simulasi)' di halaman login."
+      );
+    }
+
+    function toggleMethod(method) {
+      const emailForm = document.getElementById("emailForm");
+      const phoneForm = document.getElementById("phoneForm");
+      if (method === "email") {
+        emailForm.style.display = "block";
+        phoneForm.style.display = "none";
+      } else {
+        phoneForm.style.display = "block";
+        emailForm.style.display = "none";
+      }
+    }
+
+    function finishRegister(method) {
+      if (method === "email") {
+        const name = document.getElementById("regEmailName").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regEmailPassword").value;
+
+        if (!name || !email || !password) {
+          alert("Semua field wajib diisi.");
+          return;
+        }
+        if (password.length < 8) {
+          alert("Kata sandi minimal 8 karakter.");
+          return;
+        }
+        if (
+          users.find(
+            (u) => u.identifier && u.identifier.toLowerCase() === email.toLowerCase()
+          )
+        ) {
+          alert("Email ini sudah terdaftar. Silakan login.");
+          showScreen("login");
+          return;
+        }
+
+        users.push({
+          identifier: email,
+          name,
+          password,
+          method: "email",
+          role: "customer",
+          email,
+          phone: "",
+          address: "",
+          dob: "",
+          maritalStatus: "",
+          gender: "",
+          citizenship: ""
+        });
+        saveUsers();
+        alert("Pendaftaran dengan email berhasil. Silakan login.");
+        showScreen("login");
+      } else {
+        const name = document.getElementById("regPhoneName").value.trim();
+        const phone = document.getElementById("regPhone").value.trim();
+        const password = document.getElementById("regPhonePassword").value;
+
+        if (!name || !phone || !password) {
+          alert("Semua field wajib diisi.");
+          return;
+        }
+        if (password.length < 8) {
+          alert("Kata sandi minimal 8 karakter.");
+          return;
+        }
+        if (users.find((u) => u.identifier === phone)) {
+          alert("Nomor HP ini sudah terdaftar. Silakan login.");
+          showScreen("login");
+          return;
+        }
+
+        users.push({
+          identifier: phone,
+          name,
+          password,
+          method: "phone",
+          role: "customer",
+          email: "",
+          phone,
+          address: "",
+          dob: "",
+          maritalStatus: "",
+          gender: "",
+          citizenship: ""
+        });
+        saveUsers();
+        alert("Pendaftaran dengan nomor HP berhasil. Silakan login.");
+        showScreen("login");
+      }
+    }
+
+    function sendReset() {
+      alert("Simulasi: tautan/kode reset telah dikirim ke kontak yang Anda masukkan.");
+      showScreen("login");
+    }
+
+    // toggle lihat kata sandi login
+    const togglePassword = document.getElementById("togglePassword");
+    if (togglePassword) {
+      togglePassword.addEventListener("change", function () {
+        const pwd = document.getElementById("loginPassword");
+        pwd.type = this.checked ? "text" : "password";
+      });
+    }
+
+    function formatRupiah(num) {
+      return "Rp" + num.toLocaleString("id-ID");
+    }
+
+    function startBooking(serviceId) {
+      const cfg = servicesConfig[serviceId];
+      if (!cfg) return;
+
+      currentServiceId = serviceId;
+
+      document.getElementById("bookingTitle").textContent = "Pesan " + cfg.name;
+      document.getElementById("bookingServiceName").textContent = cfg.name;
+      document.getElementById("bookingCategory").textContent = cfg.category;
+      document.getElementById("bookingSubtitle").textContent =
+        "Lengkapi detail untuk layanan " + cfg.name + " di area Surabaya.";
+
+      document.getElementById("bookingAddress").value = "";
+      document.getElementById("bookingHouseNumber").value = "";
+      document.getElementById("bookingPrice").textContent = "Rp0";
+      document.getElementById("bookingPriceNote").textContent =
+        "Harga simulasi, belum termasuk biaya tambahan di lapangan.";
+
+      renderServiceSpecific(cfg);
+      showScreen("booking");
+    }
+
+    function useDefaultAddress() {
+      document.getElementById("bookingAddress").value =
+        "Jl. Raya Jemursari No. 21, Surabaya";
+    }
+
+    function backToServices() {
+      showScreen("services");
+    }
+
+    function confirmBooking() {
+      const cfg = servicesConfig[currentServiceId];
+      const name = cfg ? cfg.name : "layanan";
+      alert(
+        "Simulasi: pesanan " +
+          name +
+          " berhasil dibuat dan masuk ke menu Aktivitas."
+      );
+      showScreen("activity");
+    }
+
+    function renderServiceSpecific(cfg) {
+      const container = document.getElementById("serviceSpecificContainer");
+      container.innerHTML = "";
+      const priceEl = document.getElementById("bookingPrice");
+
+      function set(html) {
+        container.innerHTML = html;
+      }
+
+      // === WATER HEATER ===
+      if (cfg.type === "waterHeater") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail water heater</p>
+          <div class="field">
+            <label>Kapasitas water heater</label>
+            <select class="input" id="whCapacity">
+              <option value="lt20">Kurang dari 20 liter</option>
+              <option value="20-40">21–40 liter</option>
+              <option value="41-60">41–60 liter</option>
+              <option value="gt60">Lebih dari 60 liter</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Jumlah unit</label>
+            <div class="row-inline">
+              <button type="button" class="qty-btn" id="whMinus">-</button>
+              <span id="whQty" style="min-width:24px; text-align:center;">1</span>
+              <button type="button" class="qty-btn" id="whPlus">+</button>
+            </div>
+          </div>
+          <p class="small">
+            Estimasi sudah termasuk pengecekan kebocoran dan pembersihan kerak dasar (simulasi).
+          </p>
+        `);
+
+        const cap = document.getElementById("whCapacity");
+        const minus = document.getElementById("whMinus");
+        const plus = document.getElementById("whPlus");
+        const qtyEl = document.getElementById("whQty");
+
+        function updatePrice() {
+          const qty = parseInt(qtyEl.textContent, 10) || 1;
+          let base = 80000;
+          switch (cap.value) {
+            case "lt20":
+              base = 80000; break;
+            case "20-40":
+              base = 100000; break;
+            case "41-60":
+              base = 125000; break;
+            case "gt60":
+              base = 150000; break;
+          }
+          const total = base * qty;
+          priceEl.textContent = formatRupiah(total);
+        }
+
+        cap.addEventListener("change", updatePrice);
+        minus.addEventListener("click", () => {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          if (q > 1) q--;
+          qtyEl.textContent = String(q);
+          updatePrice();
+        });
+        plus.addEventListener("click", () => {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          q++;
+          qtyEl.textContent = String(q);
+          updatePrice();
+        });
+
+        updatePrice();
+        return;
+      }
+
+      // === CLEANING BULANAN ===
+      if (cfg.type === "monthlyCleaning") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Pengaturan cleaning bulanan</p>
+          <div class="field">
+            <label>Jadwal tugas</label>
+            <input class="input" id="mcSchedule" placeholder="contoh: Setiap Sabtu pagi" />
+          </div>
+          <div class="field">
+            <label>Waktu mulai</label>
+            <input class="input" type="time" id="mcTime" />
+          </div>
+          <div class="field">
+            <label>Durasi per kunjungan</label>
+            <select class="input" id="mcDuration">
+              <option value="2">2 jam • ≤55m² atau 2 kamar</option>
+              <option value="3">3 jam • ≤85m² atau 3 kamar</option>
+              <option value="4">4 jam • ≤105m² atau 4 kamar</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Durasi langganan</label>
+            <select class="input" id="mcMonths">
+              <option value="1">1 bulan</option>
+              <option value="2">2 bulan</option>
+              <option value="3">3 bulan</option>
+              <option value="6">6 bulan</option>
+            </select>
+          </div>
+          <p class="small">
+            Estimasi harga dihitung per kunjungan (4x per bulan). Diskon otomatis untuk durasi ≥3 bulan (simulasi).
+          </p>
+        `);
+
+        const durEl = document.getElementById("mcDuration");
+        const monthsEl = document.getElementById("mcMonths");
+
+        function updatePriceMC() {
+          const dur = parseInt(durEl.value, 10);
+          const months = parseInt(monthsEl.value, 10);
+          const visitsPerMonth = 4;
+          let basePerVisit = 100000;
+          if (dur === 3) basePerVisit = 140000;
+          if (dur === 4) basePerVisit = 180000;
+          let total = basePerVisit * visitsPerMonth * months;
+          if (months >= 3) {
+            total = Math.round(total * 0.9);
+          }
+          priceEl.textContent = formatRupiah(total);
+        }
+
+        durEl.addEventListener("change", updatePriceMC);
+        monthsEl.addEventListener("change", updatePriceMC);
+        updatePriceMC();
+        return;
+      }
+
+      // === PENGASUHAN ANAK & LANSIA & ASISTEN/HOUSEKEEPING ===
+      if (cfg.type === "careDaily" || cfg.type === "careDailyChild" || cfg.type === "careDailyElder") {
+        const labelExtra =
+          cfg.type === "careDailyChild"
+            ? " (pengasuhan anak harian)"
+            : cfg.type === "careDailyElder"
+            ? " (pendampingan lansia)"
+            : " (asisten/housekeeping harian)";
+
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Pengaturan jadwal${labelExtra}</p>
+          <div class="field">
+            <label>Jadwal tugas</label>
+            <input class="input" id="cdSchedule" placeholder="contoh: Senin–Jumat" />
+          </div>
+          <div class="field">
+            <label>Waktu mulai</label>
+            <input class="input" type="time" id="cdTime" />
+          </div>
+          <div class="field">
+            <label>Durasi per hari</label>
+            <select class="input" id="cdHours">
+              <option value="4">4 jam / hari</option>
+              <option value="8">8 jam / hari</option>
+              <option value="12">12 jam / hari</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Lama kontrak</label>
+            <select class="input" id="cdPeriod">
+              <option value="1">Per hari (1 hari)</option>
+              <option value="7">1 minggu (7 hari)</option>
+              <option value="30">1 bulan (30 hari)</option>
+            </select>
+          </div>
+          <p class="small">
+            Estimasi berdasarkan tarif harian. Kualifikasi khusus (perawat bersertifikat, dsb.) dapat menambah biaya (simulasi).
+          </p>
+        `);
+
+        const hoursEl = document.getElementById("cdHours");
+        const periodEl = document.getElementById("cdPeriod");
+
+        function updatePriceCare() {
+          const hours = parseInt(hoursEl.value, 10);
+          const days = parseInt(periodEl.value, 10);
+          let ratePerHour = 25000;
+          if (cfg.type === "careDailyChild" || cfg.type === "careDailyElder") {
+            ratePerHour = 30000;
+          }
+          const total = ratePerHour * hours * days;
+          priceEl.textContent = formatRupiah(total);
+        }
+
+        hoursEl.addEventListener("change", updatePriceCare);
+        periodEl.addEventListener("change", updatePriceCare);
+        updatePriceCare();
+        return;
+      }
+
+      // === SIMPLE CLEANING (HARIAN, DEEP, PINDAHAN, DLL) ===
+      if (cfg.type === "simpleCleaning") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail jadwal cleaning</p>
+          <div class="field">
+            <label>Tanggal kunjungan</label>
+            <input class="input" type="date" id="scDate" />
+          </div>
+          <div class="field">
+            <label>Waktu mulai</label>
+            <input class="input" type="time" id="scTime" />
+          </div>
+          <div class="field">
+            <label>Perkiraan durasi</label>
+            <select class="input" id="scDuration">
+              <option value="2">2 jam • ≤55m² / 2 kamar</option>
+              <option value="3">3 jam • ≤85m² / 3 kamar</option>
+              <option value="4">4 jam • ≤105m² / 4 kamar</option>
+            </select>
+          </div>
+          <p class="small">
+            Estimasi harga per kunjungan, cocok untuk kebutuhan satu kali atau on-demand (simulasi).
+          </p>
+        `);
+
+        const durEl = document.getElementById("scDuration");
+
+        function updatePriceSC() {
+          const dur = parseInt(durEl.value, 10);
+          let base = 90000;
+          if (dur === 3) base = 130000;
+          if (dur === 4) base = 170000;
+          priceEl.textContent = formatRupiah(base);
+        }
+
+        durEl.addEventListener("change", updatePriceSC);
+        updatePriceSC();
+        return;
+      }
+
+      // === MAINTENANCE ===
+      if (cfg.type === "maintenance") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail servis</p>
+          <div class="field">
+            <label>Tanggal kunjungan</label>
+            <input class="input" type="date" id="mtDate" />
+          </div>
+          <div class="field">
+            <label>Waktu preferensi</label>
+            <input class="input" type="time" id="mtTime" />
+          </div>
+          <div class="field">
+            <label>Deskripsi singkat masalah</label>
+            <input class="input" id="mtDesc" placeholder="contoh: AC kurang dingin / lampu sering konslet" />
+          </div>
+          <p class="small">
+            Teknisi akan membawa peralatan standar. Spare part tambahan dapat menambah biaya di luar estimasi (simulasi).
+          </p>
+        `);
+        priceEl.textContent = formatRupiah(120000);
+        return;
+      }
+
+      // === LAUNDRY ===
+      if (cfg.type === "laundry") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail laundry</p>
+          <div class="field">
+            <label>Jenis layanan</label>
+            <select class="input" id="lwType">
+              <option value="cuci">Cuci saja</option>
+              <option value="setrika">Setrika saja</option>
+              <option value="paket">Paket cuci + setrika</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Estimasi berat pakaian</label>
+            <div class="row-inline">
+              <button type="button" class="qty-btn" id="lwMinus">-</button>
+              <span id="lwQty" style="min-width:24px; text-align:center;">3</span>
+              <button type="button" class="qty-btn" id="lwPlus">+</button>
+              <span style="font-size:12px;">kg</span>
+            </div>
+          </div>
+          <p class="small">
+            Berat aktual akan ditimbang oleh mitra laundry. Estimasi harga ini hanya simulasi.
+          </p>
+        `);
+
+        const typeEl = document.getElementById("lwType");
+        const minus = document.getElementById("lwMinus");
+        const plus = document.getElementById("lwPlus");
+        const qtyEl = document.getElementById("lwQty");
+
+        function updatePriceLW() {
+          const qty = parseInt(qtyEl.textContent, 10) || 1;
+          let rate = 8000;
+          if (typeEl.value === "setrika") rate = 6000;
+          if (typeEl.value === "paket") rate = 12000;
+          const total = rate * qty;
+          priceEl.textContent = formatRupiah(total);
+        }
+
+        typeEl.addEventListener("change", updatePriceLW);
+        minus.addEventListener("click", () => {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          if (q > 1) q--;
+          qtyEl.textContent = String(q);
+          updatePriceLW();
+        });
+        plus.addEventListener("click", () => {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          q++;
+          qtyEl.textContent = String(q);
+          updatePriceLW();
+        });
+
+        updatePriceLW();
+        return;
+      }
+
+      // === MASSAGE ===
+      if (cfg.type === "massage") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail family massage</p>
+          <div class="field">
+            <label>Jumlah orang</label>
+            <div class="row-inline">
+              <button type="button" class="qty-btn" id="msMinus">-</button>
+              <span id="msQty" style="min-width:24px; text-align:center;">1</span>
+              <button type="button" class="qty-btn" id="msPlus">+</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Durasi sesi</label>
+            <select class="input" id="msDuration">
+              <option value="60">60 menit</option>
+              <option value="90">90 menit</option>
+            </select>
+          </div>
+          <p class="small">
+            Terapis akan datang ke rumah Anda. Harga sudah termasuk transport lokal (simulasi).
+          </p>
+        `);
+
+        const qtyEl = document.getElementById("msQty");
+        const minus = document.getElementById("msMinus");
+        const plus = document.getElementById("msPlus");
+        const durEl = document.getElementById("msDuration");
+
+        function updatePriceMS() {
+          const qty = parseInt(qtyEl.textContent, 10) || 1;
+          const dur = parseInt(durEl.value, 10);
+          let base = dur === 60 ? 90000 : 130000;
+          const total = base * qty;
+          priceEl.textContent = formatRupiah(total);
+        }
+
+        minus.addEventListener("click", () => {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          if (q > 1) q--;
+          qtyEl.textContent = String(q);
+          updatePriceMS();
+        });
+        plus.addEventListener("click", () => {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          q++;
+          qtyEl.textContent = String(q);
+          updatePriceMS();
+        });
+        durEl.addEventListener("change", updatePriceMS);
+
+        updatePriceMS();
+        return;
+      }
+
+      // === SHOPPING ===
+      if (cfg.type === "shopping") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail belanja</p>
+          <div class="field">
+            <label>Jenis belanja</label>
+            <input class="input" id="shType" placeholder="contoh: belanja mingguan, stok dapur, dll." />
+          </div>
+          <div class="field">
+            <label>Estimasi total belanja</label>
+            <input class="input" id="shBudget" placeholder="contoh: 500.000 (belum termasuk jasa)" />
+          </div>
+          <p class="small">
+            Biaya jasa HomeHero akan dihitung di luar total belanja, misal 10–15% dari nilai belanja (simulasi).
+          </p>
+        `);
+        priceEl.textContent = formatRupiah(35000);
+        return;
+      }
+
+      // === BUSINESS CLEANING ===
+      if (cfg.type === "businessCleaning") {
+        set(`
+          <p class="section-title" style="margin-bottom:6px;">Detail cleaning untuk bisnis</p>
+          <div class="field">
+            <label>Jenis tempat</label>
+            <select class="input" id="bcType">
+              <option value="kantor-kecil">Kantor kecil / ruko</option>
+              <option value="toko">Toko / showroom</option>
+              <option value="kos">Kos-kosan / guesthouse</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Perkiraan luas area</label>
+            <input class="input" id="bcArea" placeholder="contoh: 80 m2" />
+          </div>
+          <div class="field">
+            <label>Frekuensi layanan</label>
+            <select class="input" id="bcFreq">
+              <option value="1">1x per minggu</option>
+              <option value="2">2–3x per minggu</option>
+              <option value="4">Harian (5–6x per minggu)</option>
+            </select>
+          </div>
+          <p class="small">
+            Estimasi harga bulanan berdasarkan luas dan frekuensi. Kontrak minimum 1 bulan (simulasi).
+          </p>
+        `);
+
+        const freqEl = document.getElementById("bcFreq");
+        function updatePriceBC() {
+          const freq = parseInt(freqEl.value, 10);
+          let base = 400000;
+          if (freq === 2) base = 700000;
+          if (freq === 4) base = 1200000;
+          priceEl.textContent = formatRupiah(base);
+        }
+        freqEl.addEventListener("change", updatePriceBC);
+        updatePriceBC();
+        return;
+      }
+
+      set(`<p class="small">Detail layanan khusus belum dikonfigurasi. Ini hanya placeholder simulasi.</p>`);
+      priceEl.textContent = "Rp0";
+    }
+
+    function openOrderDetail(serviceId) {
+      const cfg = servicesConfig[serviceId];
+      if (!cfg) {
+        alert("Detail pesanan (simulasi).");
+        return;
+      }
+      alert(
+        "Detail pesanan (simulasi):\n\n" +
+          "Layanan: " +
+          cfg.name +
+          "\nKategori: " +
+          cfg.category +
+          "\nStatus: contoh status (sedang berjalan / sudah selesai)."
+      );
+    }
+
+    function openReview(serviceId) {
+      const cfg = servicesConfig[serviceId];
+      const name = cfg ? cfg.name : "layanan";
+      alert(
+        "Form ulasan (simulasi) untuk " +
+          name +
+          ".\n\nDi versi penuh, di sini pengguna bisa memberi rating bintang & komentar."
+      );
+    }
+
+    function openChat(type) {
+      if (type === "mitra") {
+        alert(
+          "Contoh tampilan chat dengan mitra (simulasi).\n\nDi versi penuh, di sini akan ada percakapan dua arah antara Anda dan Hero."
+        );
+      } else {
+        alert(
+          "Contoh tampilan chat dengan Support HomeHero (simulasi).\n\nDi versi penuh, di sini akan ada tiket bantuan dan riwayat pesan."
+        );
+      }
+    }
+
+    function updateUserUI() {
+      if (!currentUser) return;
+      const greet = document.getElementById("homeGreetingName");
+      if (greet) {
+        const full = currentUser.name || "Pengguna";
+        const first = full.trim().split(" ")[0] || full;
+        greet.textContent = first;
+      }
+      updateAccountForm();
+    }
+
+    function updateAccountForm() {
+      if (!currentUser) return;
+      const nameEl = document.getElementById("accName");
+      if (!nameEl) return;
+
+      const emailEl = document.getElementById("accEmail");
+      const phoneEl = document.getElementById("accPhone");
+      const addrEl = document.getElementById("accAddress");
+      const dobEl = document.getElementById("accDob");
+      const marEl = document.getElementById("accMarital");
+      const genderEl = document.getElementById("accGender");
+      const citEl = document.getElementById("accCitizen");
+
+      nameEl.value = currentUser.name || "";
+
+      if (currentUser.method === "email" || currentUser.method === "google") {
+        emailEl.value = currentUser.identifier || currentUser.email || "";
+        phoneEl.value = currentUser.phone || "";
+      } else if (currentUser.method === "phone") {
+        phoneEl.value = currentUser.identifier || currentUser.phone || "";
+        emailEl.value = currentUser.email || "";
+      } else {
+        emailEl.value = currentUser.email || "";
+        phoneEl.value = currentUser.phone || "";
+      }
+
+      addrEl.value = currentUser.address || "";
+      dobEl.value = currentUser.dob || "";
+      marEl.value = currentUser.maritalStatus || "";
+      genderEl.value = currentUser.gender || "";
+      citEl.value = currentUser.citizenship || "";
+    }
+
+    function saveAccountProfile() {
+      if (!currentUser) {
+        alert("Tidak ada pengguna yang sedang login.");
+        return;
+      }
+
+      const nameEl = document.getElementById("accName");
+      const emailEl = document.getElementById("accEmail");
+      const phoneEl = document.getElementById("accPhone");
+      const addrEl = document.getElementById("accAddress");
+      const dobEl = document.getElementById("accDob");
+      const marEl = document.getElementById("accMarital");
+      const genderEl = document.getElementById("accGender");
+      const citEl = document.getElementById("accCitizen");
+
+      const oldIdentifier = currentUser.identifier;
+
+      currentUser.name = nameEl.value.trim();
+      currentUser.email = emailEl.value.trim();
+      currentUser.phone = phoneEl.value.trim();
+      currentUser.address = addrEl.value.trim();
+      currentUser.dob = dobEl.value.trim();
+      currentUser.maritalStatus = marEl.value.trim();
+      currentUser.gender = genderEl.value;
+      currentUser.citizenship = citEl.value.trim();
+
+      if (currentUser.method === "email" || currentUser.method === "google") {
+        currentUser.identifier = currentUser.email;
+      } else if (currentUser.method === "phone") {
+        currentUser.identifier = currentUser.phone;
+      }
+
+      const idx = users.findIndex(
+        (u) =>
+          u.identifier === oldIdentifier ||
+          (u.identifier === currentUser.identifier && u.method === currentUser.method)
+      );
+      if (idx !== -1) {
+        users[idx] = currentUser;
+      } else {
+        users.push(currentUser);
+      }
+
+      saveUsers();
+      updateUserUI();
+      alert("Data profil berhasil disimpan (simulasi).");
+    }
+
+    // GOOGLE PICKER (SIMULASI)
+    const googleDummyAccounts = [
+      { name: "Kelompok9JosJis Demo", email: "Kelompok9JosJis.demo@gmail.com" },
+      { name: "Cornelish Demo", email: "cornelish.demo@gmail.com" }
+    ];
+
+    function openGooglePicker() {
+      const overlay = document.getElementById("googleOverlay");
+      const list = document.getElementById("googleAccountList");
+      if (!overlay || !list) {
+        alert("Overlay Google belum dikonfigurasi.");
+        return;
+      }
+      list.innerHTML = "";
+      googleDummyAccounts.forEach((acc, index) => {
+        const row = document.createElement("div");
+        row.className = "google-account";
+        row.innerHTML = `
+          <div class="google-icon"></div>
+          <div>
+            <div class="google-account-name">${acc.name}</div>
+            <div class="google-account-email">${acc.email}</div>
+          </div>
+        `;
+        row.onclick = () => chooseGoogleAccount(index);
+        list.appendChild(row);
+      });
+      overlay.style.display = "flex";
+    }
+
+    function closeGooglePicker() {
+      const overlay = document.getElementById("googleOverlay");
+      if (overlay) overlay.style.display = "none";
+    }
+
+    function chooseGoogleAccount(index) {
+      const acc = googleDummyAccounts[index];
+      if (!acc) return;
+
+      let user = users.find(
+        (u) => u.identifier && u.identifier.toLowerCase() === acc.email.toLowerCase()
+      );
+      if (!user) {
+        user = {
+          identifier: acc.email,
+          name: acc.name,
+          password: "",
+          method: "google",
+          role: "customer",
+          email: acc.email,
+          phone: "",
+          address: "",
+          dob: "",
+          maritalStatus: "",
+          gender: "",
+          citizenship: ""
+        };
+        users.push(user);
+        saveUsers();
+      }
+      currentUser = user;
+      updateUserUI();
+      closeGooglePicker();
+
+      if (currentRole === "customer") {
+        showScreen("home");
+      } else {
+        showScreen("hero");
+      }
+    }
+  </script>
+</body>
+</html>

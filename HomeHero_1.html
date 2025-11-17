@@ -559,6 +559,320 @@
       color: #5f6368;
     }
 
+    /* ===== ORDER DETAIL & REVIEW ADDITIONS ===== */
+    .order-detail-card {
+      margin-top: 18px;
+    }
+
+    .detail-status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(241, 247, 245, 0.25);
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .status-running {
+      background: rgba(0, 245, 177, 0.12);
+      border-color: var(--caribbean-green);
+    }
+
+    .status-done {
+      background: rgba(44, 194, 149, 0.18);
+      border-color: var(--mountain-meadow);
+    }
+
+    .worker-card {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.32);
+      border: 1px solid rgba(241, 247, 245, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .worker-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, var(--caribbean-green), var(--dark-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .worker-info {
+      flex: 1;
+    }
+
+    .worker-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .worker-meta {
+      font-size: 11px;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .rating-stars {
+      display: inline-flex;
+      gap: 2px;
+    }
+
+    .rating-stars .star {
+      font-size: 14px;
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .rating-stars .star.filled {
+      opacity: 1;
+      color: var(--caribbean-green);
+    }
+
+    .rating-stars-input .star {
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+
+    .rating-stars-input .star:hover {
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    .rating-value {
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    .worker-extra {
+      margin-top: 8px;
+      font-size: 11px;
+      opacity: 0.8;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tracking-card {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(241, 247, 245, 0.14);
+    }
+
+    .tracking-map-placeholder {
+      margin-top: 8px;
+      height: 120px;
+      border-radius: 14px;
+      border: 1px dashed rgba(241, 247, 245, 0.3);
+      background: rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      opacity: 0.85;
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .review-options {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .review-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(241, 247, 245, 0.25);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 6px 10px;
+      font-size: 11px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .review-chip.selected {
+      background: var(--caribbean-green);
+      color: #021013;
+      border-color: rgba(241, 247, 245, 0.8);
+    }
+
+    .review-textarea {
+      margin-top: 10px;
+      width: 100%;
+      min-height: 80px;
+      border-radius: 14px;
+      border: 1px solid rgba(241, 247, 245, 0.25);
+      background: rgba(0, 0, 0, 0.45);
+      color: var(--anti-flash-white);
+      font-size: 12px;
+      padding: 8px 10px;
+      resize: vertical;
+      outline: none;
+    }
+
+    .review-textarea::placeholder {
+      color: rgba(241, 247, 245, 0.5);
+    }
+
+    .btn-submit-review {
+      margin-top: 12px;
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.45);
+      color: var(--anti-flash-white);
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.1s ease, color 0.18s ease;
+    }
+
+    .btn-submit-review:hover {
+      background: var(--caribbean-green);
+      color: #021013;
+      transform: translateY(-1px);
+    }
+
+        /* CHAT SCREEN */
+    .chat-card {
+      margin-top: 18px;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, var(--caribbean-green), var(--dark-green));
+      flex-shrink: 0;
+    }
+
+    .chat-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .chat-role {
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    .chat-messages {
+      max-height: 260px;
+      overflow-y: auto;
+      padding: 6px 2px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.25);
+      margin-bottom: 8px;
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: 8px 10px;
+      border-radius: 14px;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .chat-bubble.them {
+      background: rgba(0, 0, 0, 0.55);
+      align-self: flex-start;
+    }
+
+    .chat-bubble.me {
+      background: var(--caribbean-green);
+      color: #021013;
+      align-self: flex-end;
+    }
+
+    .chat-time {
+      font-size: 10px;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    .chat-input-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chat-input {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    .voice-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(241, 247, 245, 0.3);
+      background: rgba(0, 0, 0, 0.45);
+      color: var(--anti-flash-white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .voice-btn:hover {
+      background: var(--caribbean-green);
+      color: #021013;
+    }
+
+    .send-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--mountain-meadow), var(--caribbean-green));
+      color: #021013;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
     @media (min-width: 768px) {
       .app {
         max-width: 430px;
@@ -599,7 +913,7 @@
 
         <div class="field">
           <label>Email atau nomor HP</label>
-          <input class="input" type="text" placeholder="contoh: Kelompok9JosJis@mail.com" id="loginEmail" />
+          <input class="input" type="text" placeholder="contoh: Kelompok9JosJis@Gmail.com" id="loginEmail" />
         </div>
 
         <div class="field">
@@ -689,7 +1003,7 @@
           </div>
           <div class="field">
             <label>Email</label>
-            <input class="input" type="email" placeholder="contoh: Kelompok9JosJis@mail.com" id="regEmail" />
+            <input class="input" type="email" placeholder="contoh: Kelompok9JosJis@Gmail.com" id="regEmail" />
           </div>
           <div class="field">
             <label>Kata sandi</label>
@@ -739,7 +1053,7 @@
       <section class="card">
         <div class="field">
           <label>Email atau nomor HP</label>
-          <input class="input" type="text" placeholder="contoh: Kelompok9JosJis@mail.com atau 08xxxxxxxxxx" />
+          <input class="input" type="text" placeholder="contoh: Kelompok9JosJis@Gmail.com atau 08xxxxxxxxxx" />
         </div>
         <button class="btn-primary" onclick="sendReset()">
           Kirim instruksi reset
@@ -753,8 +1067,8 @@
 
     <!-- HOME CUSTOMER SCREEN -->
     <section id="screen-home" class="screen">
-      <h1 class="screen-title-main">Halo, <span id="homeGreetingName">Kelompok9JosJis</span> 👋</h1>
-      <p class="screen-subtitle">Ini contoh tampilan beranda Customer HomeHero.</p>
+      <h1 class="screen-title-main">Halo, <span id="homeGreetingName">Daffa</span> 👋</h1>
+      <p class="screen-subtitle">Selamat datang kembali, ada yang bisa dibantu?</p>
 
       <section class="home-hero-card">
         <p class="home-hero-title">Rumah rapi, hidup lebih ringan.</p>
@@ -1010,7 +1324,7 @@
     <section id="screen-activity" class="screen">
       <h1 class="screen-title-main">Aktivitas & Riwayat</h1>
       <p class="screen-subtitle">
-        Lihat pesanan yang sedang berjalan dan riwayat layanan Anda (contoh tampilan sederhana).
+        Lihat pesanan yang sedang berjalan dan riwayat layanan Anda.
       </p>
 
       <section class="card">
@@ -1047,7 +1361,7 @@
     <section id="screen-messages" class="screen">
       <h1 class="screen-title-main">Pesan</h1>
       <p class="screen-subtitle">
-        Komunikasi dengan mitra HomeHero dan dukungan pelanggan (mockup sederhana).
+        Komunikasi dengan mitra HomeHero dan dukungan pelanggan.
       </p>
 
       <section class="card">
@@ -1072,11 +1386,49 @@
       </nav>
     </section>
 
+    <!-- CHAT DETAIL (MITRA / SUPPORT) -->
+    <section id="screen-chat" class="screen">
+      <h1 class="screen-title-main" id="chatTitle">Chat</h1>
+      <p class="screen-subtitle" id="chatSubtitle">
+        Contoh percakapan dengan mitra atau tim Support HomeHero.
+      </p>
+
+      <section class="card chat-card">
+        <div class="chat-header">
+          <div class="chat-avatar"></div>
+          <div>
+            <div class="chat-name" id="chatPartnerName">Mitra HomeHero</div>
+            <div class="chat-role" id="chatPartnerRole">Hero • Layanan</div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <!-- Pesan akan diisi lewat JavaScript -->
+        </div>
+
+        <div class="chat-input-row">
+          <button class="voice-btn" type="button" onclick="sendVoiceMessage()">🎤</button>
+          <input
+            class="input chat-input"
+            id="chatInput"
+            placeholder="Tulis pesan ke mitra / support..."
+          />
+          <button class="send-btn" type="button" onclick="sendTextMessage()">
+            Kirim
+          </button>
+        </div>
+      </section>
+
+      <button class="btn-ghost" type="button" onclick="backFromChat()">
+        ← Kembali ke pesan
+      </button>
+    </section>
+
     <!-- AKUN -->
     <section id="screen-account" class="screen">
       <h1 class="screen-title-main">Akun & Profil</h1>
       <p class="screen-subtitle">
-        Kelola data pribadi, kontak, dan preferensi Anda (contoh tampilan).
+        Kelola data pribadi, kontak, dan preferensi Anda.
       </p>
 
       <section class="card">
@@ -1256,6 +1608,137 @@
         ← Keluar ke halaman login
       </button>
     </section>
+
+    <!-- ORDER DETAIL SCREEN (BARU) -->
+    <section id="screen-order-detail" class="screen">
+      <h1 class="screen-title-main">Detail pesanan</h1>
+      <p class="screen-subtitle">
+        Ringkasan layanan, status, dan profil Hero yang menangani pesanan Anda.
+      </p>
+
+      <section class="card order-detail-card">
+        <p class="section-title" id="detailServiceName">Cleaning harian</p>
+        <p class="small" id="detailCategory">Layanan Kebersihan Rumah</p>
+
+        <div class="detail-status-row">
+          <span class="status-badge" id="detailStatus">Sedang berjalan</span>
+          <span class="small" id="detailSchedule">Hari ini • 16.00 WIB</span>
+        </div>
+
+        <p class="section-title" style="font-size:14px; margin-top:10px;">Profil Hero</p>
+
+        <div class="worker-card">
+          <div class="worker-avatar" id="detailWorkerAvatar">S</div>
+          <div class="worker-info">
+            <div class="worker-name" id="detailWorkerName">Mbak Sari</div>
+            <div class="worker-meta" id="detailWorkerMeta">Pengalaman 3 tahun • 120+ pesanan</div>
+            <div class="rating-row">
+              <div class="rating-stars" id="detailWorkerStars"></div>
+              <div class="rating-value" id="detailWorkerRatingValue">4,8/5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="worker-extra" id="detailWorkerExtra">
+          <div>Usia: 29 tahun</div>
+          <div>Domisili: Surabaya</div>
+          <div>Terverifikasi KTP &amp; lulus training HomeHero.</div>
+        </div>
+
+        <div class="tracking-card">
+          <p class="section-title" style="margin-bottom:4px; font-size:14px;">Pelacakan posisi</p>
+          <p class="small">
+            Posisi Hero dapat dilacak secara real-time sejak layanan dimulai hingga selesai.
+          </p>
+          <div class="tracking-map-placeholder">
+            <span>Map tracking Hero (mockup) • Live location akan muncul di sini.</span>
+          </div>
+        </div>
+
+        <button class="btn-secondary" type="button" onclick="openChat('mitra')">
+          Chat dengan Hero
+        </button>
+        <button class="btn-ghost" type="button" onclick="showScreen('activity')">
+          ← Kembali ke Aktivitas
+        </button>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
+
+    <!-- REVIEW SCREEN (ULAS LAYANAN) -->
+    <section id="screen-review" class="screen">
+      <h1 class="screen-title-main">Ulas layanan</h1>
+      <p class="screen-subtitle">
+        Berikan penilaian dan masukan untuk membantu Hero dan pelanggan lain.
+      </p>
+
+      <section class="card">
+        <p class="section-title" id="reviewServiceName">Deep Cleaning</p>
+        <p class="small" id="reviewServiceCategory">Layanan Kebersihan Rumah</p>
+
+        <p class="section-title" style="font-size:14px; margin-top:10px;">Profil Hero</p>
+
+        <div class="worker-card">
+          <div class="worker-avatar" id="reviewWorkerAvatar">S</div>
+          <div class="worker-info">
+            <div class="worker-name" id="reviewWorkerName">Mbak Sari</div>
+            <div class="worker-meta" id="reviewWorkerMeta">Pengalaman 3 tahun • 120+ pesanan</div>
+            <div class="rating-row">
+              <div class="rating-stars" id="reviewAverageStars"></div>
+              <div class="rating-value" id="reviewAverageValue">4,7/5 • rating rata-rata</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="worker-extra" id="reviewWorkerExtra">
+          <div>Domisili: Surabaya</div>
+          <div>Terverifikasi KTP &amp; lulus training HomeHero.</div>
+        </div>
+
+        <p class="section-title" style="font-size:14px; margin-top:12px;">Rating Anda</p>
+        <p class="small" style="margin-top:4px;">
+          Tap bintang untuk memberi rating 1–5. 1 = sangat kurang, 5 = sangat puas.
+        </p>
+        <div class="rating-row">
+          <div class="rating-stars rating-stars-input" id="reviewInteractiveStars"></div>
+          <div class="rating-value" id="reviewUserRatingLabel">Belum dipilih</div>
+        </div>
+
+        <p class="section-title" style="font-size:14px; margin-top:12px;">Pilih komentar cepat</p>
+        <p class="small" style="margin-top:4px;">
+          Anda dapat memilih 1–5 komentar yang paling sesuai (opsional).
+        </p>
+        <div class="review-options" id="reviewQuickComments"></div>
+
+        <p class="section-title" style="font-size:14px; margin-top:12px;">Tulis ulasan tambahan</p>
+        <textarea
+          id="reviewText"
+          class="review-textarea"
+          placeholder="Ceritakan pengalaman Anda secara singkat, misal: hasil bersih, komunikasi baik, datang tepat waktu, dll.">
+        </textarea>
+
+        <button class="btn-submit-review" type="button" onclick="submitReview()">
+          Kirim
+        </button>
+
+        <button class="btn-ghost" type="button" onclick="showScreen('activity')">
+          ← Kembali ke Aktivitas
+        </button>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-tab="home" onclick="showScreen('home')">Home</button>
+        <button class="nav-btn" data-tab="activity" onclick="showScreen('activity')">Aktivitas</button>
+        <button class="nav-btn" data-tab="messages" onclick="showScreen('messages')">Pesan</button>
+        <button class="nav-btn" data-tab="account" onclick="showScreen('account')">Akun</button>
+      </nav>
+    </section>
   </main>
 
   <!-- GOOGLE ACCOUNT PICKER (SIMULASI) -->
@@ -1277,6 +1760,9 @@
     let currentServiceId = null;
     let currentUser = null;
     let users = [];
+    let currentChatType = null; // "mitra" atau "support"
+    let currentReviewServiceId = null;
+    let currentReviewRating = 0;
 
     function loadUsers() {
       try {
@@ -1332,6 +1818,65 @@
       "housekeeping-bisnis": { name: "Housekeeping untuk bisnis", category: "Layanan untuk Bisnis & Kantor", type: "businessCleaning" }
     };
 
+    // DATA PESANAN & HERO (SIMULASI)
+    const workersConfig = {
+      "sari": {
+        id: "sari",
+        name: "Mbak Sari",
+        avatarInitial: "S",
+        rating: 4.7,
+        ratingCount: 212,
+        experienceYears: 3,
+        completedJobs: 320,
+        age: 29,
+        city: "Surabaya",
+        verified: "Terverifikasi KTP & lulus training HomeHero.",
+        bio: "Spesialis cleaning harian, deep cleaning, dan cleaning apartemen."
+      },
+      "budi": {
+        id: "budi",
+        name: "Mas Budi",
+        avatarInitial: "B",
+        rating: 4.6,
+        ratingCount: 145,
+        experienceYears: 2,
+        completedJobs: 185,
+        age: 27,
+        city: "Surabaya",
+        verified: "Terverifikasi KTP & sertifikasi teknisi AC dasar.",
+        bio: "Fokus pada layanan cuci & servis AC rumahan."
+      }
+    };
+
+    const ordersConfig = {
+      "cleaning-harian": {
+        serviceId: "cleaning-harian",
+        status: "Sedang berjalan",
+        schedule: "Hari ini • 16.00 WIB",
+        workerId: "sari"
+      },
+      "deep-cleaning": {
+        serviceId: "deep-cleaning",
+        status: "Selesai",
+        schedule: "Kemarin • 14.00 WIB",
+        workerId: "sari"
+      },
+      "cuci-ac": {
+        serviceId: "cuci-ac",
+        status: "Dijadwalkan",
+        schedule: "Jumat • 10.00 WIB",
+        workerId: "budi"
+      }
+    };
+
+    const quickCommentOptions = [
+      "Hasil sangat bersih",
+      "Amanah",
+      "Tepat waktu",
+      "Ramah dan baik hati",
+      "Rapi dan teliti"
+    ];
+
     function setRole(role) {
       currentRole = role;
       const customerBtn = document.getElementById("roleCustomer");
@@ -1370,7 +1915,10 @@
         "messages",
         "account",
         "booking",
-        "hero"
+        "hero",
+        "chat",
+        "order-detail",
+        "review"
       ];
       ids.forEach((id) => {
         const el = document.getElementById("screen-" + id);
@@ -2019,43 +2567,330 @@
       priceEl.textContent = "Rp0";
     }
 
+    // Helper: render static rating bintang 1–5
+    function renderStaticStars(containerId, rating) {
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      const rounded = Math.round(rating);
+      let html = "";
+      for (let i = 1; i <= 5; i++) {
+        html += `<span class="star ${i <= rounded ? "filled" : ""}">★</span>`;
+      }
+      el.innerHTML = html;
+    }
+
     function openOrderDetail(serviceId) {
       const cfg = servicesConfig[serviceId];
       if (!cfg) {
         alert("Detail pesanan (simulasi).");
         return;
       }
-      alert(
-        "Detail pesanan (simulasi):\n\n" +
-          "Layanan: " +
-          cfg.name +
-          "\nKategori: " +
-          cfg.category +
-          "\nStatus: contoh status (sedang berjalan / sudah selesai)."
-      );
+
+      const order = ordersConfig[serviceId] || {
+        serviceId,
+        status: "Sedang berjalan",
+        schedule: "-",
+        workerId: "sari"
+      };
+      const worker = workersConfig[order.workerId] || workersConfig["sari"];
+
+      const serviceNameEl = document.getElementById("detailServiceName");
+      const categoryEl = document.getElementById("detailCategory");
+      const statusEl = document.getElementById("detailStatus");
+      const scheduleEl = document.getElementById("detailSchedule");
+
+      const avatarEl = document.getElementById("detailWorkerAvatar");
+      const workerNameEl = document.getElementById("detailWorkerName");
+      const workerMetaEl = document.getElementById("detailWorkerMeta");
+      const workerRatingValEl = document.getElementById("detailWorkerRatingValue");
+      const workerExtraEl = document.getElementById("detailWorkerExtra");
+
+      serviceNameEl.textContent = cfg.name;
+      categoryEl.textContent = cfg.category;
+      statusEl.textContent = order.status;
+      scheduleEl.textContent = order.schedule;
+
+      statusEl.classList.remove("status-running", "status-done");
+      if (/selesai/i.test(order.status)) {
+        statusEl.classList.add("status-done");
+      } else {
+        statusEl.classList.add("status-running");
+      }
+
+      avatarEl.textContent = worker.avatarInitial || (worker.name ? worker.name.charAt(0) : "?");
+      workerNameEl.textContent = worker.name;
+      workerMetaEl.textContent =
+        "Pengalaman " +
+        (worker.experienceYears || 0) +
+        " tahun • " +
+        (worker.completedJobs || 0) +
+        "+ pesanan";
+      const ratingStr = (worker.rating || 0).toFixed(1).replace(".", ",") + "/5";
+      workerRatingValEl.textContent = ratingStr;
+      renderStaticStars("detailWorkerStars", worker.rating || 0);
+
+      workerExtraEl.innerHTML = `
+        <div>Usia: ${worker.age || "-"} tahun</div>
+        <div>Domisili: ${worker.city || "-"}</div>
+        <div>${worker.verified || ""}</div>
+      `;
+
+      showScreen("order-detail");
     }
 
     function openReview(serviceId) {
       const cfg = servicesConfig[serviceId];
-      const name = cfg ? cfg.name : "layanan";
+      const order = ordersConfig[serviceId] || {
+        serviceId,
+        status: "Selesai",
+        schedule: "-",
+        workerId: "sari"
+      };
+      const worker = workersConfig[order.workerId] || workersConfig["sari"];
+
+      currentReviewServiceId = serviceId;
+      currentReviewRating = 0;
+
+      const svcNameEl = document.getElementById("reviewServiceName");
+      const svcCatEl = document.getElementById("reviewServiceCategory");
+      const avatarEl = document.getElementById("reviewWorkerAvatar");
+      const workerNameEl = document.getElementById("reviewWorkerName");
+      const workerMetaEl = document.getElementById("reviewWorkerMeta");
+      const workerExtraEl = document.getElementById("reviewWorkerExtra");
+      const avgValEl = document.getElementById("reviewAverageValue");
+      const avgStarsContainerId = "reviewAverageStars";
+      const ratingLabelEl = document.getElementById("reviewUserRatingLabel");
+      const quickCommentsContainer = document.getElementById("reviewQuickComments");
+      const reviewTextEl = document.getElementById("reviewText");
+
+      svcNameEl.textContent = cfg ? cfg.name : "Layanan";
+      svcCatEl.textContent = cfg ? cfg.category : "Kategori layanan";
+
+      avatarEl.textContent = worker.avatarInitial || (worker.name ? worker.name.charAt(0) : "?");
+      workerNameEl.textContent = worker.name;
+      workerMetaEl.textContent =
+        "Pengalaman " +
+        (worker.experienceYears || 0) +
+        " tahun • " +
+        (worker.completedJobs || 0) +
+        "+ pesanan";
+
+      workerExtraEl.innerHTML = `
+        <div>Domisili: ${worker.city || "-"}</div>
+        <div>${worker.verified || ""}</div>
+      `;
+
+      const avgRating = worker.rating || 0;
+      const avgRatingStr =
+        avgRating.toFixed(1).replace(".", ",") +
+        "/5 • rating rata-rata (" +
+        (worker.ratingCount || 0) +
+        " ulasan)";
+      avgValEl.textContent = avgRatingStr;
+      renderStaticStars(avgStarsContainerId, avgRating);
+
+      // Reset rating user
+      ratingLabelEl.textContent = "Belum dipilih";
+
+      // Bangun bintang interaktif
+      const interactiveContainer = document.getElementById("reviewInteractiveStars");
+      interactiveContainer.innerHTML = "";
+      for (let i = 1; i <= 5; i++) {
+        const star = document.createElement("span");
+        star.className = "star";
+        star.textContent = "★";
+        star.dataset.value = String(i);
+        star.onclick = function () {
+          const val = parseInt(this.dataset.value, 10);
+          setUserReviewRating(val);
+        };
+        interactiveContainer.appendChild(star);
+      }
+
+      // Bangun komentar cepat
+      quickCommentsContainer.innerHTML = "";
+      quickCommentOptions.forEach((text) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "review-chip";
+        chip.textContent = text;
+        chip.onclick = function () {
+          chip.classList.toggle("selected");
+        };
+        quickCommentsContainer.appendChild(chip);
+      });
+
+      // Reset textarea
+      reviewTextEl.value = "";
+
+      showScreen("review");
+    }
+
+    function setUserReviewRating(value) {
+      currentReviewRating = value;
+      const container = document.getElementById("reviewInteractiveStars");
+      if (!container) return;
+      const stars = Array.from(container.querySelectorAll(".star"));
+      stars.forEach((star) => {
+        const v = parseInt(star.dataset.value || "0", 10);
+        if (v <= value) {
+          star.classList.add("filled");
+        } else {
+          star.classList.remove("filled");
+        }
+      });
+      const label = document.getElementById("reviewUserRatingLabel");
+      if (label) {
+        label.textContent = value > 0 ? value + "/5" : "Belum dipilih";
+      }
+    }
+
+    function submitReview() {
+      if (!currentReviewServiceId) {
+        alert("Tidak ada layanan yang dipilih untuk diulas.");
+        return;
+      }
+
+      const rating = currentReviewRating;
+      const quickContainer = document.getElementById("reviewQuickComments");
+      const reviewTextEl = document.getElementById("reviewText");
+
+      const selectedComments = Array.from(
+        quickContainer.querySelectorAll(".review-chip.selected")
+      ).map((chip) => chip.textContent);
+
+      const text = (reviewTextEl.value || "").trim();
+
       alert(
-        "Form ulasan (simulasi) untuk " +
-          name +
-          ".\n\nDi versi penuh, di sini pengguna bisa memberi rating bintang & komentar."
+        "Terima kasih atas ulasan Anda! (simulasi)\n\n" +
+          "Layanan: " +
+          (servicesConfig[currentReviewServiceId]?.name || "Layanan") +
+          "\nRating: " +
+          (rating || "-") +
+          "/5\n" +
+          "Komentar cepat: " +
+          (selectedComments.length ? selectedComments.join(", ") : "-") +
+          "\n" +
+          "Ulasan tambahan: " +
+          (text || "-")
       );
+
+      showScreen("activity");
     }
 
     function openChat(type) {
+      currentChatType = type;
+
+      const titleEl = document.getElementById("chatTitle");
+      const subEl = document.getElementById("chatSubtitle");
+      const nameEl = document.getElementById("chatPartnerName");
+      const roleEl = document.getElementById("chatPartnerRole");
+      const messagesEl = document.getElementById("chatMessages");
+      const inputEl = document.getElementById("chatInput");
+
+      // reset isi chat
+      messagesEl.innerHTML = "";
+      if (inputEl) inputEl.value = "";
+
       if (type === "mitra") {
-        alert(
-          "Contoh tampilan chat dengan mitra (simulasi).\n\nDi versi penuh, di sini akan ada percakapan dua arah antara Anda dan Hero."
-        );
+        // Chat dengan Hero (pekerja)
+        titleEl.textContent = "Chat dengan mitra";
+        subEl.textContent = "Hero yang mengerjakan layanan Anda.";
+        nameEl.textContent = "Mbak Sari";
+        roleEl.textContent = "Hero • Cleaning harian";
+
+        messagesEl.innerHTML = `
+          <div class="chat-bubble them">
+            <div>Selamat siang, Kak. Saya dalam perjalanan ke lokasi ya 😊</div>
+            <div class="chat-time">13.45 WIB</div>
+          </div>
+          <div class="chat-bubble me">
+            <div>Siap Mbak, hati-hati di jalan ya 🙏</div>
+            <div class="chat-time">13.46 WIB</div>
+          </div>
+        `;
       } else {
-        alert(
-          "Contoh tampilan chat dengan Support HomeHero (simulasi).\n\nDi versi penuh, di sini akan ada tiket bantuan dan riwayat pesan."
-        );
+        // Chat dengan Support
+        titleEl.textContent = "Support HomeHero";
+        subEl.textContent = "Hubungi tim dukungan HomeHero (contoh tampilan).";
+        nameEl.textContent = "Support HomeHero";
+        roleEl.textContent = "Pusat bantuan";
+
+        messagesEl.innerHTML = `
+          <div class="chat-bubble them">
+            <div>Halo, ini Support HomeHero. Ada yang bisa kami bantu?</div>
+            <div class="chat-time">09.15 WIB</div>
+          </div>
+          <div class="chat-bubble me">
+            <div>Saya ingin menanyakan detail pesanan cleaning harian.</div>
+            <div class="chat-time">09.16 WIB</div>
+          </div>
+        `;
       }
+
+      showScreen("chat");
+
+      // auto scroll ke bawah
+      setTimeout(() => {
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }, 0);
     }
+
+  function sendTextMessage() {
+      const inputEl = document.getElementById("chatInput");
+      const messagesEl = document.getElementById("chatMessages");
+      if (!inputEl || !messagesEl) return;
+
+      const text = inputEl.value.trim();
+      if (!text) return;
+
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble me";
+
+      const body = document.createElement("div");
+      body.textContent = text;
+
+      const time = document.createElement("div");
+      time.className = "chat-time";
+      time.textContent = "Baru saja";
+
+      bubble.appendChild(body);
+      bubble.appendChild(time);
+      messagesEl.appendChild(bubble);
+
+      inputEl.value = "";
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+  function sendVoiceMessage() {
+      const messagesEl = document.getElementById("chatMessages");
+      if (!messagesEl) return;
+
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble me";
+
+      const body = document.createElement("div");
+      body.textContent = "🎤 Pesan suara (simulasi)";
+
+      const time = document.createElement("div");
+      time.className = "chat-time";
+      time.textContent = "Baru saja";
+
+      bubble.appendChild(body);
+      bubble.appendChild(time);
+      messagesEl.appendChild(bubble);
+
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      alert(
+        "Simulasi: di versi produksi, tombol ini akan merekam dan mengirim pesan suara ke mitra / support."
+      );
+    }
+
+    function backFromChat() {
+      showScreen("messages");
+    }
+
 
     function updateUserUI() {
       if (!currentUser) return;
@@ -2151,7 +2986,7 @@
 
     // GOOGLE PICKER (SIMULASI)
     const googleDummyAccounts = [
-      { name: "Kelompok9JosJis Demo", email: "Kelompok9JosJis.demo@gmail.com" },
+      { name: "Kelompok 9", email: "Kelompok9JosJis@gmail.com" },
       { name: "Cornelish Demo", email: "cornelish.demo@gmail.com" }
     ];
 

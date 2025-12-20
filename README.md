@@ -87,8 +87,6 @@ Mekanisme kontrol jadwal meliputi rapat sinkronisasi rutin, pembaruan progres be
 ### Roadmap Pengembangan Lanjutan (Jan–Apr 2026)
 Roadmap ini tidak mengubah baseline tugas; fungsinya sebagai rencana lanjutan jika HomeHero diteruskan menjadi implementasi operasional.
 
-> Simpan file gambar ke: `docs/images/homehero_roadmap_jan_apr2026.png`
-
 ![Roadmap Jan–Apr 2026]
 <img width="4768" height="2370" alt="homehero_roadmap_jan_apr2026" src="https://github.com/user-attachments/assets/b350e1f0-4d6e-40e6-a651-39c80a552ac9" />
 
@@ -298,19 +296,15 @@ Stakeholder dianalisis berdasarkan power–interest agar strategi keterlibatan t
 
 ## Manajemen SDM (HR)
 ### Struktur Organisasi Proyek
-> Simpan file gambar ke: `docs/images/homehero_org_chart.png`
+![Org Chart]
+<img width="2400" height="1200" alt="homehero_org_chart" src="https://github.com/user-attachments/assets/5d3d4d22-f868-47b0-bea1-97bc7b9fcae7" />
 
-![Org Chart](docs/images/homehero_org_chart.png)
 
 ### RACI (ringkas)
 RACI digunakan untuk memperjelas siapa yang **Responsible**, **Accountable**, **Consulted**, dan **Informed** untuk aktivitas utama. Perubahan tanggung jawab harus melalui review PM dan mengikuti change control.
 
 ### Staffing Management (Akuisisi, Kalender Resource, Evaluasi, Reward)
 Akuisisi SDM dilakukan melalui negosiasi PM dengan functional/department manager untuk menugaskan resource sesuai struktur organisasi proyek. Pengelolaan kalender resource disusun agar kebutuhan jam kerja tiap peran terlihat, kapan peran perlu ditambah, dan kapan dapat dilepas.
-
-> Simpan file gambar ke: `docs/images/homehero_resource_histogram.png`
-
-![Resource Histogram](docs/images/homehero_resource_histogram.png)
 
 **Kebijakan SDM utama:**
 - Training tidak dijadwalkan bila skill set memadai; bila ada gap, pembiayaan diambil dari reserve.
@@ -343,8 +337,8 @@ Baseline Nov–Des 2025 adalah pendekatan yang logis dan dapat dipertanggungjawa
 ## Dokumentasi Prototype
 Bagian ini disiapkan untuk menampung bukti prototype dan uji kegunaan.
 
-### 1) Link Prototype
-- Figma/Prototype Link: `TULISKAN_LINK_DI_SINI`
+### 1) File Prototype
+- DIsertakan dalam bentuk file (belum di hosting)
 
 ### 2) User Flow yang Didokumentasikan
 - Onboarding & login
@@ -354,11 +348,18 @@ Bagian ini disiapkan untuk menampung bukti prototype dan uji kegunaan.
 - Pembayaran (mock flow)
 - Rating & review + laporan masalah (concept flow)
 
-### 3) Screenshot Prototype (wajib)
-Simpan gambar di `docs/prototype/` lalu tautkan di bawah ini:
+### 3) Screenshot Prototype
 
-- `docs/prototype/01-home.png` — Home/Dashboard  
-- `docs/prototype/02-service-list.png` — Daftar layanan  
+— Home/Dashboard :
+<img width="248" height="518" alt="image" src="https://github.com/user-attachments/assets/3ed535f8-b382-45d1-a8e8-3a5762effb16" />
+<img width="452" height="486" alt="image" src="https://github.com/user-attachments/assets/1d396b45-65cc-43cd-9d79-321e437a8789" />
+<img width="241" height="517" alt="image" src="https://github.com/user-attachments/assets/e0ceb21c-b2ba-4d68-b34f-f3d65f06d33d" />
+
+— Daftar layanan :
+<img width="322" height="513" alt="image" src="https://github.com/user-attachments/assets/7fff799d-2f42-448d-951b-0a71aa1e3685" />
+<img width="303" height="336" alt="image" src="https://github.com/user-attachments/assets/85642ab2-3923-47d5-88d1-0520425550ed" />
+<img width="329" height="334" alt="image" src="https://github.com/user-attachments/assets/6eb1da89-5e86-4e23-b237-249dd0117050" />
+
 - `docs/prototype/03-service-detail.png` — Detail layanan  
 - `docs/prototype/04-booking.png` — Booking & jadwal  
 - `docs/prototype/05-payment.png` — Pembayaran (mock)  

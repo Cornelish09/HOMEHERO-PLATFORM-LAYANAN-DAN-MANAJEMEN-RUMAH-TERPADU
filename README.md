@@ -74,7 +74,7 @@ Mekanisme kontrol jadwal meliputi rapat sinkronisasi rutin, pembaruan progres be
 ### Gantt Chart Baseline (Nov–Des 2025)
 > Simpan file gambar ke: `docs/images/homehero_gantt_baseline_nov_dec2025.png`
 
-![Gantt Baseline Nov–Des 2025](docs/images/homehero_gantt_baseline_nov_dec2025.png)
+![Gantt Baseline Nov–Des 2025](<img width="975" height="488" alt="image" src="https://github.com/user-attachments/assets/bc4404db-10f2-4e3f-b927-020390c3a7eb" />)
 
 **Milestone baseline (Nov–Des 2025):**
 - Kickoff & inisiasi proyek (awal Nov 2025)

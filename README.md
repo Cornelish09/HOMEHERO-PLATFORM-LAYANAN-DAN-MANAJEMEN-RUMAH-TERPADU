@@ -74,7 +74,8 @@ Mekanisme kontrol jadwal meliputi rapat sinkronisasi rutin, pembaruan progres be
 ### Gantt Chart Baseline (Nov–Des 2025)
 > Simpan file gambar ke: `docs/images/homehero_gantt_baseline_nov_dec2025.png`
 
-![Gantt Baseline Nov–Des 2025](<img width="975" height="488" alt="image" src="https://github.com/user-attachments/assets/bc4404db-10f2-4e3f-b927-020390c3a7eb" />)
+![Gantt Baseline Nov–Des 2025]
+<img width="2400" height="1200" alt="homehero_gantt_7weeks (1)" src="https://github.com/user-attachments/assets/5e031e73-aafb-4b07-bfca-fcafd3571c8b" />
 
 **Milestone baseline (Nov–Des 2025):**
 - Kickoff & inisiasi proyek (awal Nov 2025)
@@ -90,7 +91,9 @@ Roadmap ini tidak mengubah baseline tugas; fungsinya sebagai rencana lanjutan ji
 
 > Simpan file gambar ke: `docs/images/homehero_roadmap_jan_apr2026.png`
 
-![Roadmap Jan–Apr 2026](docs/images/homehero_roadmap_jan_apr2026.png)
+![Roadmap Jan–Apr 2026]
+<img width="4768" height="2370" alt="homehero_roadmap_jan_apr2026" src="https://github.com/user-attachments/assets/b350e1f0-4d6e-40e6-a651-39c80a552ac9" />
+
 
 ---
 
@@ -229,9 +232,9 @@ Risiko dikelola melalui identifikasi, analisis probabilitas–dampak, penetapan 
 - **Risiko negatif (threats):** berdampak merugikan, ditangani dengan avoid/mitigate/transfer/accept
 - **Risiko positif (opportunities):** peluang yang menguntungkan, ditangani dengan exploit/enhance/share/accept
 
-> Simpan file gambar ke: `docs/images/homehero_risk_matrix_clean.png`
+![Risk Matrix]
+<img width="4047" height="2347" alt="homehero_risk_matrix_clean" src="https://github.com/user-attachments/assets/6dba8167-d30b-4339-b1e1-ea93670ff142" />
 
-![Risk Matrix](docs/images/homehero_risk_matrix_clean.png)
 
 ### Risk Register (Contoh Ringkas)
 #### A. Risiko Negatif (Threats)

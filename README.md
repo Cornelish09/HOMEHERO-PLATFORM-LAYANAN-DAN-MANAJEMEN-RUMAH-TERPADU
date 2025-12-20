@@ -1,10 +1,6 @@
 # HomeHero
 **Platform Layanan dan Manajemen Rumah Terpadu**
 
-Dokumen ini merupakan laporan manajemen proyek untuk HomeHero yang disusun secara formal sebagai landasan perencanaan, pengendalian, dan evaluasi proyek. Struktur laporan mengikuti praktik standar manajemen proyek: scope, jadwal, biaya, kualitas, risiko, pengadaan, komunikasi, pemangku kepentingan, dan SDM. Seluruh bagian dirancang agar “berdaging” (punya metode, metrik, ambang kontrol, serta mekanisme tata kelola yang dapat diaudit).
-
----
-
 ## Daftar Isi
 1. [Ringkasan Eksekutif](#ringkasan-eksekutif)  
 2. [Profil Proyek](#profil-proyek)  

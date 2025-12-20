@@ -349,25 +349,12 @@ Bagian ini disiapkan untuk menampung bukti prototype dan uji kegunaan.
 - Rating & review + laporan masalah (concept flow)
 
 ### 3) Screenshot Prototype
+<img width="760" height="1401" alt="Cuplikan layar 2025-12-20 192835" src="https://github.com/user-attachments/assets/785e65d9-ba1b-4e30-834d-44717a027ab3" />
+<img width="770" height="1699" alt="Cuplikan layar 2025-12-20 192640" src="https://github.com/user-attachments/assets/e411e997-8616-454b-968d-c8ccd7b3d300" />
+<img width="629" height="692" alt="Cuplikan layar 2025-12-20 192558" src="https://github.com/user-attachments/assets/4ce454f0-a915-4ae9-8025-f72460952227" />
+<img width="629" height="746" alt="Cuplikan layar 2025-12-20 192518" src="https://github.com/user-attachments/assets/d019fe33-722e-47fd-b0ed-eb53fcd39313" />
+<img width="640" height="1408" alt="Cuplikan layar 2025-12-20 192443" src="https://github.com/user-attachments/assets/91e04dd5-3938-428d-8e15-7356a2c1de76" />
 
-— Home/Dashboard :
-<img width="248" height="518" alt="image" src="https://github.com/user-attachments/assets/3ed535f8-b382-45d1-a8e8-3a5762effb16" />
-<img width="452" height="486" alt="image" src="https://github.com/user-attachments/assets/1d396b45-65cc-43cd-9d79-321e437a8789" />
-<img width="241" height="517" alt="image" src="https://github.com/user-attachments/assets/e0ceb21c-b2ba-4d68-b34f-f3d65f06d33d" />
-
-— Daftar layanan :
-<img width="322" height="513" alt="image" src="https://github.com/user-attachments/assets/7fff799d-2f42-448d-951b-0a71aa1e3685" />
-<img width="303" height="336" alt="image" src="https://github.com/user-attachments/assets/85642ab2-3923-47d5-88d1-0520425550ed" />
-<img width="329" height="334" alt="image" src="https://github.com/user-attachments/assets/6eb1da89-5e86-4e23-b237-249dd0117050" />
-
-- `docs/prototype/03-service-detail.png` — Detail layanan  
-- `docs/prototype/04-booking.png` — Booking & jadwal  
-- `docs/prototype/05-payment.png` — Pembayaran (mock)  
-- `docs/prototype/06-review.png` — Rating & review  
-- `docs/prototype/07-profile.png` — Profil & preferensi  
-
-Contoh penyematan:
-![Home](docs/prototype/01-home.png)
 
 ### 4) Ringkasan Usability Testing
 - Metode: task-based testing

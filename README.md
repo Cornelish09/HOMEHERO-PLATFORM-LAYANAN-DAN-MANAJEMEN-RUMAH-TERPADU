@@ -72,8 +72,6 @@ Manajemen jadwal dilakukan dengan membentuk **schedule baseline** untuk periode 
 Mekanisme kontrol jadwal meliputi rapat sinkronisasi rutin, pembaruan progres berbasis deliverable, serta eskalasi dan penyesuaian prioritas bila hambatan memengaruhi jalur kritis.
 
 ### Gantt Chart Baseline (Nov–Des 2025)
-> Simpan file gambar ke: `docs/images/homehero_gantt_baseline_nov_dec2025.png`
-
 ![Gantt Baseline Nov–Des 2025]
 <img width="2400" height="1200" alt="homehero_gantt_7weeks (1)" src="https://github.com/user-attachments/assets/5e031e73-aafb-4b07-bfca-fcafd3571c8b" />
 
